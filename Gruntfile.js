@@ -37,6 +37,20 @@ module.exports = function(grunt) {
 			}
 		},
 
+		copy: {
+			main: {
+				files: [{
+					expand: true,
+					flatten: true,
+					src: [
+						'./bower_components/fontawesome/fonts/*',
+						'./bower_components/bootstrap/fonts/*'
+					],
+					dest: './public/assets/fonts/'
+				}]
+			}
+		},
+
 		uglify: {
 			options: {
 				mangle: false
@@ -55,10 +69,11 @@ module.exports = function(grunt) {
 
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 
-	grunt.registerTask('default', ['less', 'concat', 'uglify']);
+	grunt.registerTask('default', ['less', 'copy', 'concat', 'uglify']);
 
 };

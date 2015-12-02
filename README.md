@@ -11,22 +11,47 @@ dbPager Server is FastCGI application server written in C++.
 > so powerful templating engine that conventional programming
 > languages would be no need to develop a web site.
 
-### Installation
+## Compiling
+
+The application contains resources which should be compiled before deploying. To compile application, [NPM], [Grunt] and [Bower] tools are required.
+
+NPM can be installed with your system package manager. To download other tools and dependencies, run:
+
+```sh
+$ npm install --save-dev
+$ bower install
+```
+
+Now you are ready to compiling sources. Run:
+
+```sh
+$ grunt
+```
+
+or build entire docker container:
+
+```sh
+$ grunt docker
+```
+
+## Running the app
 
 To install the application, you can use [Docker] container:
 
 ```sh
 $ docker pull wolfsoft/blog-example
 ```
-### Development
+## Development
 
-Want to contribute? Great!
+Want to contribute? Great! Fork project on Github and send me pull requests.
 
-License
-----
+## License
 
 GPLv3
 
 [//]: #
-   [dbPager Server]: <https://dbpager.com>
-   [Docker]: <https://docker.io>
+   [dbPager Server]: <https://dbpager.com/>
+   [Docker]: <https://docker.io/>
+   [Grunt]: <http://gruntjs.com/>
+   [Bower]: <http://bower.io/>
+   [NPM]: <https://www.npmjs.com/>
