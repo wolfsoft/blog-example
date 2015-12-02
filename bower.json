@@ -1,0 +1,15 @@
+{
+  "name": "blog-example",
+  "description": "dbPager Blog Example Application",
+  "version": "1.0.0",
+  "private": false,
+  "license": "GPLv3",
+  "author": {
+    "name": "Dennis Prochko",
+    "email": "wolfsoft@mail.ru"
+  },
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "fontawesome": "~4.3.0"
+  }
+}
