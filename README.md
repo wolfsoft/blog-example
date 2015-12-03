@@ -1,6 +1,6 @@
-# Blog Example Application
+# Blog Application Example
 
-This is a blog application to run on the [dbPager Server]. The application shows how to: 
+This is a sample of blog application to run on the [dbPager Server]. The application shows how to:
 
   - Organize your source code
   - Use application components
@@ -11,24 +11,35 @@ dbPager Server is FastCGI application server written in C++.
 > so powerful templating engine that conventional programming
 > languages would be no need to develop a web site.
 
+We assume you are familiar with [Docker] and have it installed.
+
+## Downloading
+
+You can download current version of the application from our public git repository:
+
+```sh
+$ git clone https://github.com/wolfsoft/blog-example.git
+$ cd blog-example/
+```
+
 ## Compiling
 
-The application contains resources which should be compiled before deploying. To compile application, [NPM], [Grunt] and [Bower] tools are required.
+The application contains resources which should be compiled before deploying. To compile application, [NPM], [Grunt] and [Bower] are required.
 
-NPM can be installed with your system package manager. To download other tools and dependencies, run:
+NPM can be installed with your system package manager (`sudo apt-get install npm`). To download other tools and dependencies, run:
 
 ```sh
 $ npm install --save-dev
 $ bower install
 ```
 
-Now you are ready to compiling sources. Run:
+Two directories, `bower_components` and `node_modules` will be added after that. Now you are ready to compiling sources. Run:
 
 ```sh
 $ grunt
 ```
 
-or build entire docker container:
+After compiling, `public` directory will be populated with required static content. Next, build the self-hosted docker container:
 
 ```sh
 $ grunt docker
@@ -36,11 +47,8 @@ $ grunt docker
 
 ## Running the app
 
-To install the application, you can use [Docker] container:
+TODO
 
-```sh
-$ docker pull wolfsoft/blog-example
-```
 ## Development
 
 Want to contribute? Great! Fork project on Github and send me pull requests.

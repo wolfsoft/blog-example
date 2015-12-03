@@ -8,7 +8,7 @@
     "email": "wolfsoft@mail.ru"
   },
   "dependencies": {
-    "bootstrap": "~3.3.5",
-    "fontawesome": "~4.3.0"
+    "bootstrap": "~3",
+    "fontawesome": "~4"
   }
 }
