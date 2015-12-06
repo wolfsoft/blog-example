@@ -1,17 +1,31 @@
 # Blog Application Example
 
-This is a sample of blog application to run on the [dbPager Server]. The application shows how to:
+This is a simple blog application to run on the [dbPager Server]. The application shows how to:
 
   - Organize your source code
   - Use application components
+  - Use the database
 
-dbPager Server is FastCGI application server written in C++. 
+dbPager Server is FastCGI application server written in C++.
 
 > The overriding design goal for dbPager Server is to provide
 > so powerful templating engine that conventional programming
 > languages would be no need to develop a web site.
 
-We assume you are familiar with [Docker] and have it installed.
+## Quick Start
+To play with application, you need [Docker] and application docker container. Refer to [docker manual] for instructions about installing docker. Now download latest version of the application:
+
+```sh
+$ docker pull wolfsoft/blog-example:latest
+```
+
+Run it:
+
+```sh
+$ docker run -dp wolfsoft/blog-example:latest --name blog
+```
+Access the application with web browser at: http://localhost:8089/
+
 
 ## Downloading
 
@@ -60,6 +74,7 @@ GPLv3
 [//]: #
    [dbPager Server]: <https://dbpager.com/>
    [Docker]: <https://docker.io/>
+   [docker manual]: <http://docs.docker.com/engine/installation/>
    [Grunt]: <http://gruntjs.com/>
    [Bower]: <http://bower.io/>
    [NPM]: <https://www.npmjs.com/>

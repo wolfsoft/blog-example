@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "bootstrap": "~3",
-    "fontawesome": "~4"
+    "bootstrap-tags": "~1.1",
+    "datatables": "~1.10",
+    "fontawesome": "~4",
+    "summernote": "~0.7.0"
   }
 }
