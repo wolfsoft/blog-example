@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="blog-not-found">
+	<app:page>
+		<h1>I Am Sorry</h1>
+		<p class="lead">The page you are looking for is not found</p>
+		<p>It just so happens that page might have been removed or had its name changed. Visit&amp;#x20;<a href="/">Home Page</a>&amp;#x20;
+			or use&amp;#x20;<strong>Blog Search</strong>&amp;#x20;form to find what you need.</p>
+	</app:page>
+</dbp:tag>
+
+</dbp:module>

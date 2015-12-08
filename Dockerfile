@@ -40,8 +40,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 	&& rm -rf /tmp/* \
 	&& rm -rf /var/tmp/*
 
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/blog"]
+VOLUME ["/var/www/blog"]
 
-EXPOSE 8089
+EXPOSE 80 443
 
 CMD /usr/local/bin/dbpagerd && nginx

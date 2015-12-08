@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="admin-view-users">
+
+<h1 class="page-header">
+	Users
+</h1>
+
+<a href="#" class="btn btn-primary"><i class="fa fa-plus"></i>&amp;#x20;New User…</a>
+
+<p>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Role</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Dennis</td>
+			<td>Prochko</td>
+			<td>wolfsoft@mail.ru</td>
+			<td>Administrator</td>
+			<td>
+				<div class="dropdown">
+					<button id="dLabel" type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Action&amp;#x20;<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dLabel">
+						<li><a href="#">Edit User…</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Delete User…</a></li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</p>
+
+</dbp:tag>
+
+</dbp:module>

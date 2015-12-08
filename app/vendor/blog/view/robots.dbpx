@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="blog-robots">
+<dbp:set name="content_type">text/plain; charset=utf-8</dbp:set>
+<dbp:switch test="{$blog_enable_robots}">
+	<dbp:case match="1">
+User-agent: *{byte(13)}
+Allow: /{byte(13)}
+Disallow: /auth
+Disallow: /admin
+Host: http://{$blog_host}{byte(13)}
+Sitemap: http://{$blog_host}/sitemap.xml{byte(13)}
+	</dbp:case>
+	<dbp:case>
+User-agent: *{byte(13)}
+Disallow: /{byte(13)}
+	</dbp:case>
+</dbp:switch>
+</dbp:tag>
+
+</dbp:module>

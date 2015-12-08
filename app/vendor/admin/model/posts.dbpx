@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="posts-categories">
+	<app:database>
+		<app:query statement="select c.id, c.title from category c, article_category a where c.id = a.category and a.article = :id">
+			<dbp:execute/>
+		</app:query>
+	</app:database>
+</dbp:tag>
+
+<dbp:tag name="posts-get">
+	<app:database>
+		<app:query statement="select * from article order by updated_at desc">
+			<dbp:execute/>
+		</app:query>
+	</app:database>
+</dbp:tag>
+
+<dbp:tag name="post-save">
+	<app:database>
+		<app:query statement="select key from settings">
+			<dbp:var name="v" value="{${$key}}">
+				<app:query statement="update settings set value = :v where key = :key" />
+			</dbp:var>
+		</app:query>
+	</app:database>
+</dbp:tag>
+
+</dbp:module>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:routes="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+
+<dbp:include href="autowire.dbpx" />
+
+<routes:routes>
+
+	<routes:map method="GET" path="/"><app:blog-index/></routes:map>
+	<routes:map method="GET" path="/auth/login"><app:auth-login/></routes:map>
+	<routes:map method="POST" path="/auth/login"><app:auth-login-check/></routes:map>
+	<routes:map method="GET" path="/auth/logout"><app:auth-logout/></routes:map>
+
+	<routes:map method="GET" path="/admin"><app:admin-index/></routes:map>
+	<routes:map method="GET" path="/admin/settings"><app:admin-index/></routes:map>
+	<routes:map method="GET" accept="text/html" path="/admin/categories"><app:admin-categories /></routes:map>
+	<!--routes:map method="GET" accept="application/json" path="/admin/categories"><app:admin-categories-json/></routes:map-->
+	<routes:map method="GET" path="/admin/posts"><app:admin-posts/></routes:map>
+	<routes:map method="GET" path="/admin/posts/new"><app:admin-posts-new/></routes:map>
+	<routes:map method="POST" path="/admin/settings"><app:admin-settings-save/></routes:map>
+	<routes:map method="GET" path="/admin/users"><app:admin-users/></routes:map>
+
+	<routes:map method="GET" path="/robots.txt"><app:blog-robots/></routes:map>
+	<routes:map method="GET" path="/sitemap.xml"><app:blog-sitemap/></routes:map>
+
+</routes:routes>
+
+
+</dbp:module>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="admin-view-well">
+	<div class="well">
+		<h4>{$title}</h4>
+		<p>
+			<dbp:execute />
+		</p>
+	</div>
+</dbp:tag>
+
+</dbp:module>

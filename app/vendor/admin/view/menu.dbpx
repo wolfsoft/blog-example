@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="admin-view-logo">
+	<a class="navbar-brand" href="/"><span class="fa fa-edit fa-lg"></span></a>
+</dbp:tag>
+
+<dbp:tag name="admin-view-menu">
+	<ul class="nav navbar-nav">
+		<li>
+			<a href="#">About</a>
+		</li>
+		<li>
+			<a href="#">Services</a>
+		</li>
+		<li>
+			<a href="#">Contact</a>
+		</li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+		<li>
+			<app:auth-view-login-widget />
+		</li>
+	</ul>
+</dbp:tag>
+
+</dbp:module>

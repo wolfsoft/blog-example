@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="sidebar">
+	<app:well title="Contact Me">
+		<div class="clearfix">
+			<img src="/images/author.jpg" alt="" style="width:50%;height:50%;margin:0 1em 1em;float:left" />
+			<p><strong>Dennis Prochko</strong></p>
+			<ul class="list-unstyled">
+				<li><i class="fa fa-envelope"></i>&amp;#x20;<a href="mailto:wolfsoft@mail.ru">wolfsoft@mail.ru</a></li>
+				<li><i class="fa fa-comments"></i>&amp;#x20;<a href="https://telegram.me/wolfsoft">Telegram</a></li>
+				<li><i class="fa fa-google-plus-square"></i>&amp;#x20;<a href="https://plus.google.com/u/0/117719450860870768407">Google +</a></li>
+				<li><i class="fa fa-github-square"></i>&amp;#x20;<a href="https://github.com/wolfsoft">GitHub</a></li>
+			</ul>
+		</div>
+	</app:well>
+
+	<app:search />
+
+	<app:categories>
+		<li><a href="#">Databases</a></li>
+		<li><a href="#">dbPager Server</a></li>
+		<li><a href="#">Linux &amp; Unix</a></li>
+		<li><a href="#">Programming</a></li>
+		<li><a href="#">Web Development</a></li>
+	</app:categories>
+	
+	<app:popular>
+		<li><a href="#">Databases</a></li>
+		<li><a href="#">dbPager Server</a></li>
+		<li><a href="#">Linux &amp; Unix</a></li>
+		<li><a href="#">Programming</a></li>
+		<li><a href="#">Web Development</a></li>
+	</app:popular>
+
+	<app:well title="Subscribe To Blog Updates">
+		<div class="clearfix">
+			<p>(I will not spam you by any other reason)</p>
+			<form action="subscribe">
+				<div class="form-group">
+					<label for="email">Email address</label>
+					<input type="email" class="form-control" id="email" name="email" placeholder="Type your email…" />
+				</div>
+				<button type="submit" class="btn btn-default">Subscribe</button>
+			</form>
+		</div>
+	</app:well>
+
+</dbp:tag>
+
+</dbp:module>

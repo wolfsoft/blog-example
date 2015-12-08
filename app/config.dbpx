@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:sql="http://dbpager.org.ru/schemas/dbp/3.0/sqlite"
+>
+
+<dbp:tag name="database">
+	<sql:database dsn="/home/dennis/public_html/storage/database.sqlite">
+		<dbp:execute/>
+	</sql:database>
+</dbp:tag>
+
+<dbp:tag name="query">
+	<sql:query statement="{$statement}">
+		<dbp:execute/>
+	</sql:query>
+</dbp:tag>
+
+</dbp:module>

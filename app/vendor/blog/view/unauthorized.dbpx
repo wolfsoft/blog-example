@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="unauthorized">
+	<dbp:throw code="403">
+	<app:page>
+		<h1>Unauthorized</h1>
+		<p class="lead">You have no rights to access this page</p>
+		<p>Be sure that you have&amp;#x20;<a href="/auth/login?return={$path_info}">logged in</a>. Or just &amp;#x20;<a class="do-back" href="/">return back</a>.</p>
+	</app:page>
+	</dbp:throw>
+</dbp:tag>
+
+</dbp:module>

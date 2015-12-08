@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="admin-index">
+	<app:auth-check>
+	<app:admin-page>
+		<app:admin-view-settings />
+	</app:admin-page>
+	</app:auth-check>
+</dbp:tag>
+
+</dbp:module>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="blog-sitemap">
+	<dbp:set name="content_type">text/xml; charset=utf-8</dbp:set>
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+		<url>
+			<loc>http://{$blog_host}/</loc>
+			<lastmod>2005-01-01</lastmod>
+		</url>
+	</urlset> 
+</dbp:tag>
+
+</dbp:module>

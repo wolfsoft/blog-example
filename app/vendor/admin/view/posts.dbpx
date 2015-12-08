@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="admin-view-posts">
+
+<h1 class="page-header">
+	Posts
+</h1>
+
+<dbp:switch test="{len($action_message) > 0}">
+	<dbp:case match="1">
+		<div class="alert alert-success" role="alert">{$action_message}</div>
+	</dbp:case>
+</dbp:switch>
+
+<a href="/admin/posts/new" class="btn btn-primary"><i class="fa fa-plus"></i>&amp;#x20;New Post…</a>
+
+<p>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Categories</th>
+			<th>Published</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<app:posts-get>
+		<tr>
+			<td><a href="/admin/posts/{$id}">{$title}</a></td>
+			<td>Some desc...</td>
+			<td>
+				<ul class="list-unstyled">
+					<app:posts-categories>
+						<li><a href="/admin/categories/{$id}">{$title}</a></li>
+					</app:posts-categories>
+				</ul>
+			</td>
+			<td>
+				<dbp:switch test="{$published}">
+					<dbp:case match="1">yes</dbp:case>
+					<dbp:case match="0">no</dbp:case>
+				</dbp:switch>
+			</td>
+			<td>
+				<div class="dropdown">
+					<button id="dLabel" type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Action&amp;#x20;<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dLabel">
+						<li><a href="#">Edit Post…</a></li>
+						<dbp:switch test="{$published}">
+							<dbp:case match="0">
+								<li><a href="/admin/posts/{$id}/publish">Publish</a></li>
+							</dbp:case>
+							<dbp:case match="1">
+								<li><a href="/admin/posts/{$id}/unpublish">Unpublish</a></li>
+							</dbp:case>
+						</dbp:switch>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Delete Post…</a></li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+		</app:posts-get>
+	</tbody>
+</table>
+</p>
+
+</dbp:tag>
+
+</dbp:module>

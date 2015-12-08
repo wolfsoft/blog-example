@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="blog-description">
+	<app:settings-get>
+		<h1 class="page-header">{$blog_title}</h1>
+		{$blog_description}
+	</app:settings-get>
+</dbp:tag>
+
+
+<dbp:tag name="blog-post-teaser">
+	<h2>
+		<a href="#">{$title}</a>
+	</h2>
+
+	<p class="lead">
+		Posted to&amp;#x20;<a href="#">Guides</a>
+	</p>
+	<p>
+		<span class="fa fa-tag"></span>&amp;#x20;<a href="#">#HowTo</a>,&amp;#x20;<a href="#">#Snippets</a>
+	</p>
+
+	<p><span class="glyphicon glyphicon-time"></span>&amp;#x20;Posted on {$date_publish}</p>
+
+	<hr />
+	<img class="img-responsive" src="http://placehold.it/900x300" alt="" />
+	<hr />
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+
+	<a class="btn btn-primary" href="#">Read More&amp;#x20;<span class="glyphicon glyphicon-chevron-right"></span></a>
+
+	<hr />
+</dbp:tag>
+
+<dbp:tag name="content">
+
+	<app:blog-description />
+
+<!--	
+	<app:blog-get id="{$id}">
+		<app:blog-post-teaser title="Hello World!"/>
+	</app:blog-get>
+-->
+
+	<app:blog-post-teaser title="Hello World!" date_publish="August 28, 2013 at 10:45 PM" />
+
+	<app:blog-post-teaser title="Hello World 2!" date_publish="August 28, 2013 at 10:45 PM" />
+
+	<!-- Pager -->
+	<ul class="pager">
+		<li class="previous">
+			<a href="#">« Older</a>
+		</li>
+		<li class="next">
+			<a href="#">Newer »</a>
+		</li>
+	</ul>
+</dbp:tag>
+
+</dbp:module>

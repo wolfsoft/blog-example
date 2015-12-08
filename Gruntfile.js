@@ -3,18 +3,11 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-		sass: {
-			dist: {
-				files: {
-					'./bower_components/bootstrap-tags/dist/css/bootstrap-tags.css': './bower_components/bootstrap-tags/sass/bootstrap-tags.scss'
-				}
-			}
-		},
-
 		less: {
 			development: {
 				options: {
-					compress: true
+					compress: true,
+					paths: "./bower_components"
 				},
 				files: {
 					"./public/assets/stylesheets/frontend.css": "./resources/assets/less/frontend.less",
@@ -39,7 +32,8 @@ module.exports = function(grunt) {
 				src: [
 					'./bower_components/jquery/dist/jquery.js',
 					'./bower_components/bootstrap/dist/js/bootstrap.js',
-					'./bower_components/bootstrap-tags/dist/js/bootstrap-tags.js',
+					'./bower_components/typeahead.js/dist/typeahead.bundle.js',
+					'./bower_components/bootstrap-tokenfield/dist/bootstrap-tokenfield.js',
 					'./bower_components/summernote/dist/summernote.js',
 					'./resources/assets/javascript/backend.js'
 				],
@@ -76,6 +70,11 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		
+		exec: {
+			gzip: "find ./public -type f ! -name '*.gz' -exec gzip -f -k -9 -N '{}' ';'",
+			autowire: "./autowire.sh"
+		},
 
 		devUpdate: {
 		    main: {
@@ -96,8 +95,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-dev-update');
 
-	grunt.registerTask('default', ['sass', 'less', 'copy', 'concat', 'uglify']);
+	grunt.registerTask('default', ['less', 'copy', 'concat', 'uglify', 'exec']);
 
 };

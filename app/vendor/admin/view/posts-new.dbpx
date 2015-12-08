@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="admin-view-posts-new">
+
+<h1 class="page-header">
+	New Post
+</h1>
+
+<dbp:switch test="{len($action_message) > 0}">
+	<dbp:case match="1">
+		<div class="alert alert-success" role="alert">{$action_message}</div>
+	</dbp:case>
+</dbp:switch>
+
+<form method="post" action="/admin/posts">
+	<div class="form-group">
+		<label for="blog-title">Title</label>
+		<input type="text" class="form-control" id="post-title" placeholder="Type post title…" name="title" value="{$title}"/>
+	</div>
+	<div class="form-group">
+		<label for="blog-categories">Categories</label>
+		<input type="text" class="form-control tag-list" id="blog-categories" placeholder="Select categories" value="{$categories}"/>
+	</div>
+	<div class="form-group">
+		<label for="blog-desc">Content</label>
+		<input type="hidden" name="content" />
+		<div class="textarea" data-fill="content" style="display:none">{$content}</div>
+	</div>
+	<div class="form-group">
+		<hr />
+		<button type="submit" class="btn btn-primary">Save changes</button>
+	</div>
+</form>
+
+</dbp:tag>
+
+</dbp:module>

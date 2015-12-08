@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="admin-view-settings">
+
+<h1 class="page-header">
+	Settings
+</h1>
+
+<dbp:switch test="{len($action_message) > 0}">
+	<dbp:case match="1">
+		<div class="alert alert-success" role="alert">{$action_message}</div>
+	</dbp:case>
+</dbp:switch>
+
+<app:settings-get>
+	<form method="post" action="/admin/settings">
+		<div class="form-group">
+			<label for="blog-title">Title</label>
+			<input type="text" class="form-control" id="blog-title" placeholder="Type blog title…" name="blog_title" value="{$blog_title}"/>
+		</div>
+		<div class="form-group">
+			<label for="blog-desc">Description</label>
+			<input type="hidden" name="blog_description" />
+			<div class="textarea" data-fill="blog_description" style="display:none">{$blog_description}</div>
+		</div>
+		<div class="form-group">
+			<label for="blog-logo">Logo</label>
+			<input type="file" id="blog-logo"/>
+			<p class="help-block">To change the logo, select image file</p>
+		</div>
+		<br />
+		<h2>Server Settings</h2>
+		<hr />
+		<div class="form-group row">
+			<div class="col-md-4">
+				<label for="blog-robots">Enable Indexing</label>
+				<div class="radio">
+					<label><input id="blog-robots" type="radio" name="blog_enable_robots" value="1" />Yes, open blog for search engines</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="blog_enable_robots" value="0" />No, keep the blog private</label>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<label for="blog-caching">Enable Caching</label>
+				<div class="radio">
+					<label><input id="blog-caching" type="radio" name="blog_enable_caching" value="1" />Yes, speed up the blog by use caching</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="blog_enable_caching" value="0" />No, I'm a developer and I do not need caching</label>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<label for="blog-security">Enable Security</label>
+				<div class="radio">
+					<label><input id="blog-security" type="radio" name="blog_enable_security" value="1" />Yes, protect the blog from known web attack vectors</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="blog_enable_security" value="0" />No, I'm a developer and I do not need any limitations</label>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="form-group row">
+			<div class="col-md-6">
+				<label for="blog-host">Primary Domain Name</label>
+				<input type="text" class="form-control" id="blog-host" placeholder="i.e., www.example.com" name="blog_host" value="{$blog_host}"/>
+				<p class="help-block">All requests will redirected to primary domain, except of administrative section.</p>
+			</div>
+			<div class="col-md-6">
+				<label for="blog-https">Use HTTPS for Primary Domain</label>
+				<div class="radio">
+					<label><input id="blog-https" type="radio" name="blog_use_ssl" value="1" />Yes, please. And do https version by default</label>
+					<p class="help-block">Free SSL certificate will be automatically issued.</p>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="blog_use_ssl" value="0" />No, the blog should not use secure https protocol</label>
+				</div>
+			</div>
+		</div>		
+		<hr />
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Save changes</button>
+		</div>
+	</form>
+</app:settings-get>
+
+</dbp:tag>
+
+</dbp:module>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="auth-login">
+	<app:page>
+		<h1 class="page-header">
+			Log In
+		</h1>
+
+		<dbp:switch test="{len($error_message) > 0}">
+			<dbp:case match="1">
+				<div class="alert alert-danger" role="alert">{$error_message}</div>
+			</dbp:case>
+		</dbp:switch>
+
+		<form method="post" action="/auth/login">
+			<div class="form-group">
+				<label for="auth-email">Email</label>
+				<input type="email" class="form-control" id="auth-email" placeholder="Type your email…" name="email" />
+			</div>
+			<div class="form-group">
+				<label for="auth-password">Password</label>
+				<input type="password" class="form-control" id="auth-password" placeholder="Type your password…" name="password" />
+			</div>
+			<div class="form-group">
+				<p><a href="/auth/forgot">Forgot your password?</a></p>
+			</div>
+			<hr />
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Log In</button>
+			</div>
+		</form>
+
+	</app:page>
+</dbp:tag>
+
+</dbp:module>

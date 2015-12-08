@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="auth-view-login-widget">
+	<dbp:switch test="{len($user_id) > 0}">
+		<dbp:case match="1">
+			<a href="/auth/logout">Log Out</a>
+		</dbp:case>
+		<dbp:case>
+			<a href="/auth/login">Log In</a>
+		</dbp:case>
+	</dbp:switch>
+</dbp:tag>
+
+</dbp:module>
