@@ -25,7 +25,14 @@
 		<meta name="description" content="{$description}" />
 	</lib:default>
 
-	<link href="/assets/stylesheets/frontend.css" rel="stylesheet" />
+	<style>
+		<dbp:try><dbp:read href="{$root_path}/public/assets/stylesheets/critical.css" /><dbp:catch /></dbp:try>
+	</style>
+
+	<script nonce="blogapplicationexample">!function(e)\{"use strict";var n=function(n,t,o)\{var l,r=e.document,i=r.createElement("link");if(t)l=t;else\{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]\}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e)\{for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function()\{f(e)\})\};return i.onloadcssdefined=f,f(function()\{i.media=o||"all"\}),i\};"undefined"!=typeof module?module.exports=n:e.loadCSS=n\}("undefined"!=typeof global?global:this);loadCSS("/assets/stylesheets/frontend.css");</script>
+	<noscript>
+		<link href="/assets/stylesheets/frontend.css" rel="stylesheet" />
+	</noscript>
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	&lt;!--[if lt IE 9]&gt;
@@ -179,7 +186,7 @@
 	<!-- /.container -->
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="/assets/javascript/frontend.js"></script>
+	<script src="/assets/javascript/frontend.min.js"></script>
 
 </body>
 

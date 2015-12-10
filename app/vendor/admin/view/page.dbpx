@@ -92,7 +92,7 @@
 	<!-- /.container -->
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="/assets/javascript/backend.js"></script>
+	<script src="/assets/javascript/backend.min.js"></script>
 
 </body>
 

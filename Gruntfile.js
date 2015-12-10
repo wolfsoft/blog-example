@@ -70,7 +70,23 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		
+
+		critical: {
+			test: {
+				options: {
+					base: './public/',
+					minify: true,
+					css: [
+						'./public/assets/stylesheets/frontend.css'
+					],
+					width: 1300,
+					height: 500
+				},
+				src: './resources/example.html',
+				dest: './public/assets/stylesheets/critical.css'
+			}
+		},
+
 		exec: {
 			gzip: "find ./public -type f ! -name '*.gz' -exec gzip -f -k -9 -N '{}' ';'",
 			autowire: "./autowire.sh"
@@ -95,9 +111,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-critical');
 	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-dev-update');
 
-	grunt.registerTask('default', ['less', 'copy', 'concat', 'uglify', 'exec']);
+	grunt.registerTask('default', ['less', 'copy', 'concat', 'uglify', 'critical', 'exec']);
 
 };

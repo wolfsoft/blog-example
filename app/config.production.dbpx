@@ -6,7 +6,7 @@
 	xmlns:sql="http://dbpager.org.ru/schemas/dbp/3.0/sqlite"
 >
 
-<dbp:var name="root_path" value="/home/dennis/public_html" type="global" />
+<dbp:var name="root_path" value="/var/www/blog" type="global" />
 
 <dbp:tag name="database">
 	<sql:database dsn="{$root_path}/storage/database.sqlite">
