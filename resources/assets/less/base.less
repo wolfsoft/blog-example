@@ -1,8 +1,15 @@
 @import 'bootstrap/less/bootstrap.less';
 @import 'fontawesome/less/font-awesome.less';
 
+.page-header {
+  padding-bottom: ((@line-height-computed / 2) - 1);
+  margin: @line-height-computed 0 @line-height-computed;
+  border-bottom: 1px solid @page-header-border-color;
+}
+
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    overflow: scroll;
 }
 
 footer {
