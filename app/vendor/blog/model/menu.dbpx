@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="menu-get">
+	<app:database>
+		<app:query statement="select a.title_short as title, a.uri as href from article a, category c, article_category ac where a.uri != &quot;/&quot; and c.title = &quot;Menu&quot; and ac.article = a.id and ac.category = c.id">
+			<dbp:execute />
+		</app:query>
+	</app:database>
+</dbp:tag>
+
+</dbp:module>
