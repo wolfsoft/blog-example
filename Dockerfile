@@ -43,7 +43,15 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 	\
 	&& openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 \
 	&& mv blog/app/config.production.dbpx blog/app/config.dbpx \
-	&& cp -f blog/nginx/application.conf /etc/nginx/nginx.conf \
+	&& cp -f blog/nginx/*.conf /etc/nginx/ \
+	&& mkdir -p /var/cache/nginx \
+	&& chown www-data:www-data /var/cache/nginx \
+	&& chmod 0755 /var/cache/nginx \
+	&& mkdir -p /etc/letsencrypt/live/localhost \
+	&& cp -f blog/nginx/*.pem /etc/letsencrypt/live/localhost/ \
+	&& cp -f blog/nginx/*.conf /etc/nginx/ \
+	&& chown www-data:www-data /etc/nginx/*.conf \
+	&& chmod 0640 /etc/nginx/*.conf \
 	\
 	&& sed -i "s;^bind = .*$;bind = /var/run/dbpagerd.sock;g" /usr/local/etc/dbpager/dbpager.conf \
 	&& sed -i "s;^# user = .*$;user = www-data;g" /usr/local/etc/dbpager/dbpager.conf \
@@ -52,10 +60,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 	&& chown www-data:www-data -R /var/www/* \
 	&& find /var/www/ -type d -exec chmod 0755 '{}' ';' \
 	&& find /var/www/ -type f -exec chmod 0644 '{}' ';' \
-	&& chown www-data:www-data /etc/nginx/nginx.conf \
-	&& chmod 0640 /etc/nginx/nginx.conf \
 	\
-	&& find /usr/local/etc/dbpager/ ! -name 'dbp_sqlite.conf' ! -name 'dbp_xslt.conf' ! -name 'dbpager.conf' -type f -delete \
+	&& find /usr/local/etc/dbpager/ ! -name 'dbp_sqlite.conf' ! -name 'dbpager.conf' -type f -delete \
 	&& apt-get -y purge git \
 	&& apt-get -y autoremove \
 	&& apt-get -y clean \
@@ -63,7 +69,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 	&& rm -rf /tmp/* \
 	&& rm -rf /var/tmp/*
 
-VOLUME ["/var/www/blog"]
+VOLUME ["/var/www/blog/storage"]
 
 EXPOSE 80 443
 
