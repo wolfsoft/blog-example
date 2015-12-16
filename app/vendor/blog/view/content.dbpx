@@ -8,20 +8,17 @@
 >
 
 <dbp:tag name="blog-description">
-	<app:settings-get>
-		<h1 class="page-header">{$blog_title}</h1>
-		{$blog_description}
-	</app:settings-get>
+	{$blog_content}
 </dbp:tag>
 
 
 <dbp:tag name="blog-post-teaser">
-	<h2>
-		<a href="#">{$title}</a>
-	</h2>
+	<h3>
+		<a href="#">{$title_long}</a>
+	</h3>
 
-	<p class="lead">
-		Posted to&amp;#x20;<a href="#">Guides</a>
+	<p>
+		<span class="fa fa-list-alt"></span>&amp;#x20;Posted to&amp;#x20;<a href="#">Home</a>
 	</p>
 	<p>
 		<span class="fa fa-tag"></span>&amp;#x20;<a href="#">#HowTo</a>,&amp;#x20;<a href="#">#Snippets</a>
@@ -30,10 +27,12 @@
 	<p><span class="glyphicon glyphicon-time"></span>&amp;#x20;Posted on {$date_publish}</p>
 
 	<hr />
-	<img class="img-responsive" src="http://placehold.it/900x300" alt="" />
+	<img class="img-responsive" width="900" height="300" src="/images/placeholder-900x300.png" alt="" />
 	<hr />
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+	<p>
+	{$teaser}
+	</p>
 
 	<a class="btn btn-primary" href="#">Read More&amp;#x20;<span class="glyphicon glyphicon-chevron-right"></span></a>
 
@@ -44,15 +43,13 @@
 
 	<app:blog-description />
 
-<!--	
-	<app:blog-get id="{$id}">
-		<app:blog-post-teaser title="Hello World!"/>
-	</app:blog-get>
--->
+	<br />
+	<h2>Latest Posts</h2>
+	<hr />
 
-	<app:blog-post-teaser title="Hello World!" date_publish="August 28, 2013 at 10:45 PM" />
-
-	<app:blog-post-teaser title="Hello World 2!" date_publish="August 28, 2013 at 10:45 PM" />
+	<app:posts-get>
+		<app:blog-post-teaser />
+	</app:posts-get>
 
 	<!-- Pager -->
 	<ul class="pager">

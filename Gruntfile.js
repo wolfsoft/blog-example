@@ -76,11 +76,8 @@ module.exports = function(grunt) {
 				options: {
 					base: './public/',
 					minify: true,
-					css: [
-						'./public/assets/stylesheets/frontend.css'
-					],
-					width: 1300,
-					height: 500
+					css: ['./public/assets/stylesheets/frontend.css'],
+					ignore: ['@font-face',/url\(/]
 				},
 				src: './resources/example.html',
 				dest: './public/assets/stylesheets/critical.css'
@@ -88,6 +85,7 @@ module.exports = function(grunt) {
 		},
 
 		exec: {
+			lang: "./lang-sync.sh",
 			gzip: "find ./public -type f ! -name '*.gz' -exec gzip -f -k -9 -N '{}' ';'",
 			autowire: "./autowire.sh"
 		},

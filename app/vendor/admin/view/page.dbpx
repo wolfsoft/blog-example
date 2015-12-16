@@ -18,10 +18,10 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<lib:default name="title" value="Example Blog Application">
+	<lib:default name="title" value="Administrative Section">
 		<title>{$title}</title>
 	</lib:default>
-	<lib:default name="description" value="dbPager Examples - Example Blog Application">
+	<lib:default name="description" value="Administrative section of the blog">
 		<meta name="description" content="{$description}" />
 	</lib:default>
 

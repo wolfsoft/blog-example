@@ -14,7 +14,7 @@
 			<ul class="nav nav-pills nav-stacked">
 				<dbp:var name="asettings,aposts,acategories,acomments,asubscribers,ausers" value="">
 					<dbp:switch test="{$path_info}">
-						<dbp:case match="/admin"><dbp:set name="asettings">active</dbp:set></dbp:case>
+						<dbp:case match="/admin"><dbp:set name="aposts">active</dbp:set></dbp:case>
 						<dbp:case match="/admin/settings"><dbp:set name="asettings">active</dbp:set></dbp:case>
 						<dbp:case match="/admin/posts"><dbp:set name="aposts">active</dbp:set></dbp:case>
 						<dbp:case match="/admin/posts/new"><dbp:set name="aposts">active</dbp:set></dbp:case>
@@ -23,12 +23,12 @@
 						<dbp:case match="/admin/subscribers"><dbp:set name="asubscribers">active</dbp:set></dbp:case>
 						<dbp:case match="/admin/users"><dbp:set name="ausers">active</dbp:set></dbp:case>
 					</dbp:switch>
-					<li class="{$asettings}"><a href="/admin/settings">Settings</a></li>
 					<li class="{$aposts}"><a href="/admin/posts">Posts</a></li>
 					<li class="{$acategories}"><a href="/admin/categories">Categories</a></li>
 					<li class="{$acomments}"><a href="/admin/comments">Comments</a></li>
 					<li class="{$asubscribers}"><a href="/admin/subscribers">Subscribers</a></li>
 					<li class="{$ausers}"><a href="/admin/users">Users</a></li>
+					<li class="{$asettings}"><a href="/admin/settings">Settings</a></li>
 				</dbp:var>
 			</ul>
 		</nav>

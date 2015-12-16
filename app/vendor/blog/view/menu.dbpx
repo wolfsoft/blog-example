@@ -8,20 +8,23 @@
 >
 
 <dbp:tag name="logo">
-	<a class="navbar-brand" href="/"><span class="fa fa-edit fa-lg"></span></a>
+	<dbp:switch test="{len($user_id) > 0}">
+		<dbp:case match="1">
+			<a class="navbar-brand" href="/admin" style="min-width:55px"><span class="fa fa-edit fa-lg"></span></a>
+		</dbp:case>
+		<dbp:case>
+			<a class="navbar-brand" href="/" style="min-width:55px"><span class="fa fa-edit fa-lg"></span></a>
+		</dbp:case>
+	</dbp:switch>
 </dbp:tag>
 
 <dbp:tag name="menu">
 	<ul class="nav navbar-nav">
-		<li>
-			<a href="#">About</a>
-		</li>
-		<li>
-			<a href="#">Services</a>
-		</li>
-		<li>
-			<a href="#">Contact</a>
-		</li>
+		<app:menu-get>
+			<li>
+				<a href="{$href}">{$title}</a>
+			</li>
+		</app:menu-get>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
 		<li>

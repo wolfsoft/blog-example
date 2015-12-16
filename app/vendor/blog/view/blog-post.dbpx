@@ -9,6 +9,7 @@
 
 <dbp:tag name="blog-post">
 	<app:page-post>
+		{$content}
 	</app:page-post>
 </dbp:tag>
 

@@ -20,9 +20,14 @@
 </dbp:switch>
 
 <form method="post" action="/admin/posts">
+	<app:xsrf-token />
 	<div class="form-group">
 		<label for="blog-title">Title</label>
 		<input type="text" class="form-control" id="post-title" placeholder="Type post title…" name="title" value="{$title}"/>
+	</div>
+	<div class="form-group">
+		<label for="blog-desc">Description</label>
+		<textarea id="blog_desc" class="form-control" name="blog_description" rows="3" placeholder="Type post description…">{$blog_description}</textarea>
 	</div>
 	<div class="form-group">
 		<label for="blog-categories">Categories</label>

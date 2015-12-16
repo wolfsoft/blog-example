@@ -19,77 +19,102 @@
 	</dbp:case>
 </dbp:switch>
 
+<dbp:switch test="{len($error_message) > 0}">
+	<dbp:case match="1">
+		<div class="alert alert-danger" role="alert">{$error_message}</div>
+	</dbp:case>
+</dbp:switch>
+
 <app:settings-get>
-	<form method="post" action="/admin/settings">
-		<div class="form-group">
-			<label for="blog-title">Title</label>
-			<input type="text" class="form-control" id="blog-title" placeholder="Type blog title…" name="blog_title" value="{$blog_title}"/>
-		</div>
-		<div class="form-group">
-			<label for="blog-desc">Description</label>
-			<input type="hidden" name="blog_description" />
-			<div class="textarea" data-fill="blog_description" style="display:none">{$blog_description}</div>
-		</div>
-		<div class="form-group">
-			<label for="blog-logo">Logo</label>
-			<input type="file" id="blog-logo"/>
-			<p class="help-block">To change the logo, select image file</p>
-		</div>
-		<br />
-		<h2>Server Settings</h2>
-		<hr />
-		<div class="form-group row">
-			<div class="col-md-4">
-				<label for="blog-robots">Enable Indexing</label>
-				<div class="radio">
-					<label><input id="blog-robots" type="radio" name="blog_enable_robots" value="1" />Yes, open blog for search engines</label>
+	<div id="content">
+
+	<ul class="nav nav-tabs" data-tabs="tabs">
+		<li role="presentation" class="active"><a href="#blog" data-toggle="tab">Blog Settings</a></li>
+		<li role="presentation"><a href="#server" data-toggle="tab">Server Settings</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="blog">
+			<br />
+			<form method="post" action="/admin/settings" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="blog-title">Title</label>
+					<input type="text" class="form-control" id="blog-title" placeholder="Type blog title…" name="blog_title" value="{$blog_title}"/>
 				</div>
-				<div class="radio">
-					<label><input type="radio" name="blog_enable_robots" value="0" />No, keep the blog private</label>
+				<div class="form-group">
+					<label for="blog-desc">Description</label>
+					<textarea id="blog_desc" class="form-control" name="blog_description" rows="3" placeholder="Type blog description…">{$blog_description}</textarea>
 				</div>
-			</div>
-			<div class="col-md-4">
-				<label for="blog-caching">Enable Caching</label>
-				<div class="radio">
-					<label><input id="blog-caching" type="radio" name="blog_enable_caching" value="1" />Yes, speed up the blog by use caching</label>
+				<div class="form-group">
+					<label for="blog-logo">Logo</label>
+					<input type="file" id="blog-logo" name="blog_logo"/>
+					<p class="help-block">To change the logo, select image file</p>
 				</div>
-				<div class="radio">
-					<label><input type="radio" name="blog_enable_caching" value="0" />No, I'm a developer and I do not need caching</label>
+				<div class="form-group">
+					<label for="blog-content">Keynote Speech</label>
+					<input type="hidden" name="blog_content" />
+					<div id="blog-content" class="textarea" data-fill="blog_content" style="display:none">{$blog_content}</div>
 				</div>
-			</div>
-			<div class="col-md-4">
-				<label for="blog-security">Enable Security</label>
-				<div class="radio">
-					<label><input id="blog-security" type="radio" name="blog_enable_security" value="1" />Yes, protect the blog from known web attack vectors</label>
+				<hr />
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Save changes</button>
 				</div>
-				<div class="radio">
-					<label><input type="radio" name="blog_enable_security" value="0" />No, I'm a developer and I do not need any limitations</label>
+			</form>
+		</div> <!-- .tabpanel -->
+
+		<div role="tabpanel" class="tab-pane" id="server">
+			<br />
+			<form method="post" action="/admin/settings">
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label for="blog-robots">Enable Indexing</label>
+						<div class="radio">
+							<label><input id="blog-robots" type="radio" name="system_enable_robots" value="1" />Yes, open blog for search engines</label>
+							<p class="help-block">Google can start indexing this blog</p>
+						</div>
+						<div class="radio">
+							<label><input type="radio" name="system_enable_robots" value="0" />No, keep the blog private</label>
+							<p class="help-block">Blog is forbidden to access by Google</p>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="blog-devmode">Production Mode</label>
+						<div class="radio">
+							<label><input id="blog-devmode" type="radio" name="system_devmode" value="0" />Yes, blog is on production</label>
+							<p class="help-block">Performance and security tweaks will apply (recommended)</p>
+						</div>
+						<div class="radio">
+							<label><input type="radio" name="system_devmode" value="1" />No, please use developer mode</label>
+							<p class="help-block">Turns caching and security limits off</p>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<hr />
-		<div class="form-group row">
-			<div class="col-md-6">
-				<label for="blog-host">Primary Domain Name</label>
-				<input type="text" class="form-control" id="blog-host" placeholder="i.e., www.example.com" name="blog_host" value="{$blog_host}"/>
-				<p class="help-block">All requests will redirected to primary domain, except of administrative section.</p>
-			</div>
-			<div class="col-md-6">
-				<label for="blog-https">Use HTTPS for Primary Domain</label>
-				<div class="radio">
-					<label><input id="blog-https" type="radio" name="blog_use_ssl" value="1" />Yes, please. And do https version by default</label>
-					<p class="help-block">Free SSL certificate will be automatically issued.</p>
+				<hr />
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label for="blog-host">Primary Domain Name</label>
+						<input type="text" class="form-control" id="blog-host" placeholder="i.e., www.example.com" name="system_host" value="{$system_host}"/>
+						<p class="help-block">All requests will redirected to primary domain, except of administrative section.</p>
+					</div>
+					<div class="col-md-6">
+						<label for="blog-https">Use HTTPS for Primary Domain</label>
+						<div class="radio">
+							<label><input id="blog-https" type="radio" name="system_use_ssl" value="1" />Yes, please. And do https version by default</label>
+							<p class="help-block">Free SSL certificate will be automatically issued</p>
+						</div>
+						<div class="radio">
+							<label><input type="radio" name="system_use_ssl" value="0" />No, the blog should not use secure https protocol</label>
+						</div>
+					</div>
+				</div>		
+				<hr />
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Save changes</button>
 				</div>
-				<div class="radio">
-					<label><input type="radio" name="blog_use_ssl" value="0" />No, the blog should not use secure https protocol</label>
-				</div>
-			</div>
-		</div>		
-		<hr />
-		<div class="form-group">
-			<button type="submit" class="btn btn-primary">Save changes</button>
-		</div>
-	</form>
+			</form>
+		</div> <!-- .tabpanel -->
+	</div> <!-- .tabcontent -->
+	</div>
 </app:settings-get>
 
 </dbp:tag>

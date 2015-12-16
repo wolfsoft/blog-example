@@ -35,8 +35,8 @@
 	<tbody>
 		<app:posts-get>
 		<tr>
-			<td><a href="/admin/posts/{$id}">{$title}</a></td>
-			<td>Some desc...</td>
+			<td><a href="/admin/posts/{$id}">{$title_long}</a></td>
+			<td>{$description_long}</td>
 			<td>
 				<ul class="list-unstyled">
 					<app:posts-categories>

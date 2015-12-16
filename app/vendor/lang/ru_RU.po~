@@ -1,0 +1,83 @@
+# Blog Example Application Russian Translation
+# Copyright (c) 2015 Dennis Prochko
+# This file is distributed under the same license as the blog-example package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: blog-example 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-16 03:32+0300\n"
+"PO-Revision-Date: 2015-12-16 03:33+0300\n"
+"Last-Translator: Dennis Prochko <wolfsoft@mail.ru>\n"
+"Language-Team: ru_RU <support@dbpager.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: app/vendor/auth/controller/login.dbpx:12
+#: app/vendor/auth/controller/login.dbpx:35
+#: app/vendor/auth/view/login-widget.dbpx:16
+msgid "Log In"
+msgstr "Войти"
+
+#: app/vendor/auth/controller/login.dbpx:23
+msgid "Email"
+msgstr "Электронная почта"
+
+#: app/vendor/auth/controller/login.dbpx:27
+msgid "Password"
+msgstr "Пароль"
+
+#: app/vendor/auth/controller/login.dbpx:31
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+#: app/vendor/auth/view/login-widget.dbpx:13
+msgid "Log Out"
+msgstr "Выйти"
+
+#: app/vendor/blog/view/blog-index.dbpx:19
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+#: app/vendor/blog/view/categories.dbpx:13
+msgid "Blog Categories"
+msgstr "Категории блога"
+
+#: app/vendor/blog/view/footer.dbpx:13
+msgid "Copyright © 2015 Dennis Prochko"
+msgstr "Авторские права © 2015 Прочко Денис"
+
+#: app/vendor/blog/view/popular.dbpx:13
+msgid "Most Popular Posts"
+msgstr "Самые популярные статьи"
+
+#: app/vendor/blog/view/search.dbpx:12
+msgid "Blog Search"
+msgstr "Поиск в блоге"
+
+#: app/vendor/blog/view/sidebar.dbpx:46
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#: app/vendor/blog/view/sidebar.dbpx:48
+msgid "I promise do not spam you"
+msgstr "Я обещаю, что не буду отправлять спам"
+
+#: app/vendor/blog/view/sidebar.dbpx:50
+msgid "Subscribe"
+msgstr "Подписаться"
+
+#: app/vendor/blog/view/sidebar.dbpx:53
+msgid "Subscribe to RSS channel"
+msgstr "Подписаться на RSS-канал"
+
+#: app/vendor/blog/view/unauthorized.dbpx:13
+msgid "Unauthorized"
+msgstr "Нет авторизации"
+
+#: app/vendor/blog/view/unauthorized.dbpx:14
+msgid "You have no rights to access this page"
+msgstr "У вас нет прав для доступа к этой странице"

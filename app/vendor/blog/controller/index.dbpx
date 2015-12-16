@@ -7,10 +7,29 @@
 	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
 
-<dbp:tag name="blog-index">
-	<app:page>
-		<app:content />
-	</app:page>
+<dbp:tag name="blog-index-controller">
+
+	<dbp:switch test="{$fired}">
+		<dbp:case match="0">
+			<app:post-get uri="/{$arg1}">
+				<app:blog-post />
+				<dbp:set name="fired">1</dbp:set>
+			</app:post-get>
+		</dbp:case>
+	</dbp:switch>
+
+	<dbp:switch test="{$fired}">
+		<dbp:case match="0">
+			<app:settings-get>
+				<app:blog-index-view>
+					<app:content />
+					<app:posts-get />
+					<dbp:set name="fired">1</dbp:set>
+				</app:blog-index-view>
+			</app:settings-get>
+		</dbp:case>
+	</dbp:switch>
+
 </dbp:tag>
 
 </dbp:module>

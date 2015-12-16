@@ -16,7 +16,7 @@ cat > autowire.dbpx<<EOL
 <dbp:include href="config.dbpx" />
 EOL
 
-find `find . ! -path . -type d` -name '*.dbpx' -exec echo '<dbp:include href="{}" />' ';' >> autowire.dbpx
+find `find . ! -path . -type d` -name '*.dbpx' -exec echo '<dbp:include href="{}" />' ';' | sort | uniq >> autowire.dbpx
 
 cat >> autowire.dbpx<<EOL
 

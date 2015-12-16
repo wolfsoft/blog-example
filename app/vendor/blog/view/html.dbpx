@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="html">
+
+<dbp:set name="content_type">text/html</dbp:set>
+
+&lt;!DOCTYPE html&gt;
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{$title}</title>
+	<meta property="og:title" content="{$title}" />
+	<meta property="og:description" content="{$description}" />
+	<meta property="og:type" content="website" />
+	<meta name="description" content="{$description}" />
+
+	<style nonce="blogapplicationexample">
+		<dbp:try><dbp:read href="{$root_path}/public/assets/stylesheets/critical.css" /><dbp:catch /></dbp:try>
+	</style>
+
+	<script nonce="blogapplicationexample">!function(e)\{"use strict";var n=function(n,t,o)\{var l,r=e.document,i=r.createElement("link");if(t)l=t;else\{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]\}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e)\{for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function()\{f(e)\})\};return i.onloadcssdefined=f,f(function()\{i.media=o||"all"\}),i\};"undefined"!=typeof module?module.exports=n:e.loadCSS=n\}("undefined"!=typeof global?global:this);loadCSS("/assets/stylesheets/frontend.css");</script>
+	<noscript>
+		<link href="/assets/stylesheets/frontend.css" rel="stylesheet" />
+	</noscript>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	&lt;!--[if lt IE 9]&gt;
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	&lt;![endif]--&gt;
+
+	<link rel="alternate" type="application/rss+xml" href="/rss" />
+
+	<!-- Favicon crazyness -->
+	<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-touch-icon-152x152.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon-180x180.png" />
+	<link rel="icon" type="image/png" href="/images/favicon/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="/images/favicon/favicon-194x194.png" sizes="194x194" />
+	<link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192" />
+	<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
+	<link rel="manifest" href="/images/favicon/manifest.json" />
+	<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+	<meta name="msapplication-TileColor" content="#da532c" />
+	<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png" />
+	<meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+	<dbp:execute />
+	<script src="/assets/javascript/frontend.min.js"></script>
+</body>
+
+</html>
+
+</dbp:tag>
+
+</dbp:module>

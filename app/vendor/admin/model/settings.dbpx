@@ -19,7 +19,11 @@
 	<app:database>
 		<app:query statement="select key from settings">
 			<dbp:var name="v" value="{${$key}}">
-				<app:query statement="update settings set value = :v where key = :key" />
+				<dbp:switch test="{len($v) > 0}">
+					<dbp:case match="1">
+						<app:query statement="update settings set value = :v where key = :key" />
+					</dbp:case>
+				</dbp:switch>
 			</dbp:var>
 		</app:query>
 	</app:database>

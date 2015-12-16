@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:routes="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="xsrf-check">
+	<dbp:switch test="{len($xsrf_token) > 0 &amp; $xsrf_token_security_fail = $xsrf_token}">
+		<dbp:case match="1">
+			<dbp:execute />
+		</dbp:case>
+		<dbp:case>
+			<app:unauthorized />
+		</dbp:case>
+	</dbp:switch>
+</dbp:tag>
+
+<dbp:tag name="xsrf-token">
+	<dbp:switch test="{len($xsrf_token_security_fail) = 0}">
+		<dbp:case match="1">
+			<dbp:var name="xsrf_token_security_fail" value="{uuid()}" type="user" />
+		</dbp:case>
+	</dbp:switch>
+	<input type="hidden" name="xsrf_token" value="{$xsrf_token_security_fail}" />
+</dbp:tag>
+
+</dbp:module>

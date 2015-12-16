@@ -9,39 +9,7 @@
 
 <dbp:tag name="page-post">
 
-<dbp:set name="content_type">text/html</dbp:set>
-
-&lt;!DOCTYPE html&gt;
-<html lang="en">
-
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<lib:default name="title" value="Example Blog Application">
-		<title>{$title}</title>
-	</lib:default>
-	<lib:default name="description" value="dbPager Examples - Example Blog Application">
-		<meta name="description" content="{$description}" />
-	</lib:default>
-
-	<style>
-		<dbp:try><dbp:read href="{$root_path}/public/assets/stylesheets/critical.css" /><dbp:catch /></dbp:try>
-	</style>
-
-	<script nonce="blogapplicationexample">!function(e)\{"use strict";var n=function(n,t,o)\{var l,r=e.document,i=r.createElement("link");if(t)l=t;else\{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]\}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e)\{for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function()\{f(e)\})\};return i.onloadcssdefined=f,f(function()\{i.media=o||"all"\}),i\};"undefined"!=typeof module?module.exports=n:e.loadCSS=n\}("undefined"!=typeof global?global:this);loadCSS("/assets/stylesheets/frontend.css");</script>
-	<noscript>
-		<link href="/assets/stylesheets/frontend.css" rel="stylesheet" />
-	</noscript>
-
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	&lt;!--[if lt IE 9]&gt;
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	&lt;![endif]--&gt;
-</head>
-
-<body>
+<app:html title="{$title_short}" description="{$description_short}">
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -70,12 +38,12 @@
         <div class="row">
 
             <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
+            <div class="col-md-8">
 
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>Blog Post Title</h1>
+                <h1>{$title_long}</h1>
 
                 <!-- Author -->
                 <p class="lead">
@@ -90,17 +58,12 @@
                 <hr />
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="" />
+                <img class="img-responsive" width="900" height="300" src="/images/placeholder-900x300.png" alt="" />
 
                 <hr />
 
                 <!-- Post Content -->
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
+				<dbp:execute />
                 <hr />
 
                 <!-- Blog Comments -->
@@ -173,24 +136,12 @@
 
 		<!-- Footer -->
 		<footer>
-			<div class="row">
-				<div class="col-lg-12">
-					<p>Copyright © 2015 Dennis Prochko</p>
-				</div>
-				<!-- /.col-lg-12 -->
-			</div>
-			<!-- /.row -->
+			<app:footer />
 		</footer>
 
 	</div>
 	<!-- /.container -->
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="/assets/javascript/frontend.min.js"></script>
-
-</body>
-
-</html>
+</app:html>
 
 </dbp:tag>
 

@@ -8,7 +8,7 @@
 >
 
 <dbp:tag name="admin-settings-save">
-	<app:admin-settings-save />
+	<app:settings-save />
 	<dbp:var name="action_message" value="Settings are saved">
 	<app:admin-page>
 		<app:admin-view-settings />

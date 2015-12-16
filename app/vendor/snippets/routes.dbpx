@@ -7,30 +7,38 @@
 	xmlns:routes="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
 
+<dbp:tag name="not-found">
+	<dbp:throw code="404">
+		<app:blog-not-found />
+	</dbp:throw>
+</dbp:tag>
+
 <dbp:tag name="routes">
 	<dbp:var name="fired" value="0">
 		<dbp:execute />
 		<dbp:switch test="{$fired}">
 			<dbp:case match="0">
-				<dbp:throw code="404">
-					<app:blog-not-found />
-				</dbp:throw>
+				<routes:not-found />
 			</dbp:case>
 		</dbp:switch>		
 	</dbp:var>
 </dbp:tag>
 
 <dbp:tag name="map">
-	<dbp:switch test="{$path_info = $path}">
-		<dbp:case match="1">
-			<dbp:switch test="{$http_method = $method}">
+	<dbp:switch test="{$fired}">
+		<dbp:case match="0">
+			<dbp:switch test="{$path_info = $path}">
 				<dbp:case match="1">
-					<dbp:execute/>
-					<dbp:set name="fired">1</dbp:set>
+					<dbp:switch test="{$http_method = $method}">
+						<dbp:case match="1">
+							<dbp:execute/>
+							<dbp:set name="fired">1</dbp:set>
+						</dbp:case>
+					</dbp:switch>
 				</dbp:case>
 			</dbp:switch>
 		</dbp:case>
-	</dbp:switch>
+	</dbp:switch>		
 </dbp:tag>
 
 </dbp:module>
