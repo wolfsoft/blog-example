@@ -28,16 +28,16 @@ WORKDIR /var/www
 # Copy application code
 COPY ["nginx", "blog/nginx"]
 COPY ["app", "blog/app"]
-COPY ["public", "blog/public"]
-COPY ["storage", "blog/storage"]
+COPY ["public", "/root/public"]
+COPY ["storage/*", "/root/"]
+COPY ["docker/*", "/root/"]
 
-# Install and configure nginx
+# Install and configure
 RUN export DEBIAN_FRONTEND=noninteractive \
+	&& echo "deb http://httpredir.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list \
 	&& apt-get update \
 	\
-	&& apt-get -y install git \
-	&& git clone https://github.com/letsencrypt/letsencrypt \
-	&& letsencrypt/letsencrypt-auto --help \
+	&& apt-get -y -t unstable install letsencrypt \
 	\
 	&& apt-get -y install sudo openssl nginx-full \
 	\
@@ -50,27 +50,33 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 	&& mkdir -p /etc/letsencrypt/live/localhost \
 	&& cp -f blog/nginx/*.pem /etc/letsencrypt/live/localhost/ \
 	&& cp -f blog/nginx/*.conf /etc/nginx/ \
+	&& cp -f blog/nginx/htpasswd /etc/nginx/ \
 	&& chown www-data:www-data /etc/nginx/*.conf \
-	&& chmod 0640 /etc/nginx/*.conf \
+	&& chown www-data:www-data /etc/nginx/htpasswd \
+	&& chmod 0660 /etc/nginx/*.conf \
+	&& chmod 0660 /etc/nginx/htpasswd \
 	\
 	&& sed -i "s;^bind = .*$;bind = /var/run/dbpagerd.sock;g" /usr/local/etc/dbpager/dbpager.conf \
 	&& sed -i "s;^# user = .*$;user = www-data;g" /usr/local/etc/dbpager/dbpager.conf \
 	&& sed -i "s;^# group = .*$;group = www-data;g" /usr/local/etc/dbpager/dbpager.conf \
 	\
+	&& chmod +x /root/start.sh \
+	\
+	&& mkdir -p /var/www/blog/storage \
+	&& mkdir -p /var/www/blog/public \
 	&& chown www-data:www-data -R /var/www/* \
 	&& find /var/www/ -type d -exec chmod 0755 '{}' ';' \
 	&& find /var/www/ -type f -exec chmod 0644 '{}' ';' \
 	\
 	&& find /usr/local/etc/dbpager/ ! -name 'dbp_sqlite.conf' ! -name 'dbpager.conf' -type f -delete \
-	&& apt-get -y purge git \
 	&& apt-get -y autoremove \
 	&& apt-get -y clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /tmp/* \
 	&& rm -rf /var/tmp/*
 
-VOLUME ["/var/www/blog/storage"]
+VOLUME ["/var/www/blog/public", "/var/www/blog/storage", "/var/www/blog/app/local"]
 
 EXPOSE 80 443
 
-CMD /usr/local/bin/dbpagerd && /etc/init.d/nginx start && tail -f /var/log/nginx/error.log
+CMD /root/start.sh
