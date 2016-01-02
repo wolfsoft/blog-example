@@ -20,4 +20,12 @@
 	</sql:query>
 </dbp:tag>
 
+<dbp:tag name="configured">
+	<!--dbp:locale path="/home/dennis/public_html/app/vendor/lang" domain="blog-example" locale="ru_RU"-->
+	<app:database>
+		<dbp:execute />
+	</app:database>
+	<!--/dbp:locale-->
+</dbp:tag>
+
 </dbp:module>

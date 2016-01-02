@@ -3,15 +3,22 @@
 <dbp:module
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
-	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
 
-<dbp:tag name="admin-view-categories-json">
+<dbp:tag name="category-index-view-json">
 	[
-	<app:categories-get>
+	<app:data-category>
 		"{$title}",
-	</app:categories-get>
+	</app:data-category>
+	"-"]
+</dbp:tag>
+
+<dbp:tag name="tag-index-view-json">
+	[
+	<app:data-tag>
+		"{$title}",
+	</app:data-tag>
 	"-"]
 </dbp:tag>
 

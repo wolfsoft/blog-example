@@ -2,8 +2,9 @@
 
 <dbp:module
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
-	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
-	xmlns:routes="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom/app"
+	xmlns:auth="http://dbpager.org.ru/schemas/dbp/3.0/custom/auth"
+	xmlns:routes="http://dbpager.org.ru/schemas/dbp/3.0/custom/routes"
 >
 
 
@@ -12,30 +13,59 @@
 <app:configured>
 <routes:routes>
 
-	<routes:map method="GET" path="/auth/login"><app:auth-login/></routes:map>
+	<routes:map method="GET" path="/auth/login">l<app:auth-login/></routes:map>
 	<routes:map method="POST" path="/auth/login"><app:auth-login-check/></routes:map>
 	<routes:map method="GET" path="/auth/logout"><app:auth-logout/></routes:map>
 
-	<routes:map method="GET" path="/admin"><app:admin-posts/></routes:map>
-	<routes:map method="GET" path="/admin/settings"><app:admin-index/></routes:map>
-	<routes:map method="GET" accept="text/html" path="/admin/categories"><app:admin-categories /></routes:map>
-	<!--routes:map method="GET" accept="application/json" path="/admin/categories"><app:admin-categories-json/></routes:map-->
-	<routes:map method="GET" path="/admin/posts"><app:admin-posts/></routes:map>
-	<routes:map method="GET" path="/admin/posts/new"><app:admin-posts-new/></routes:map>
-	
-	<routes:map method="POST" path="/admin/settings"><app:admin-settings-save/></routes:map>
-	<routes:map method="GET" path="/admin/users"><app:admin-users/></routes:map>
+<!--
+	<app:include-auth-routes />
+
+	<auth:required role="admin">
+		<app:entity-map name="setting" />
+		<app:entity-map name="post" />
+		<app:entity-map name="comment" />
+		<app:entity-map name="user" />
+		<app:entity-map name="subscriber" />
+	</auth:required>
+
+-->
+
+	<routes:map method="GET" path="/categories"><app:category-index-controller /></routes:map>
+
+	<routes:prefix path="/admin">
+		<auth:auth-check>
+			<routes:map method="GET" path="default"><app:admin-posts-index-controller/></routes:map>
+			<app:entity-map name="categories" />
+			<routes:map method="GET" path="/settings"><app:admin-index/></routes:map>
+			<routes:map method="POST" path="/settings"><app:admin-settings-save/></routes:map>
+			<routes:map method="GET" path="/posts/new"><app:admin-posts-new-controller/></routes:map>
+			<routes:map method="GET" path="/posts/">
+				<dbp:switch test="{$arg4}">
+					<dbp:case match="publish">
+						<app:admin-posts-publish-controller id="{$arg3}" published="1"/>
+					</dbp:case>
+					<dbp:case match="unpublish">
+						<app:admin-posts-publish-controller id="{$arg3}" published="0"/>
+					</dbp:case>
+					<dbp:case match="delete">
+						<app:admin-posts-delete-controller id="{$arg3}" />
+					</dbp:case>
+					<dbp:case>
+						<app:admin-posts-edit-controller/>
+					</dbp:case>
+				</dbp:switch>
+			</routes:map>
+			<routes:map method="GET" path="/posts"><app:admin-posts-index-controller/></routes:map>
+			<routes:map method="POST" path="/posts"><app:admin-posts-save-controller/></routes:map>
+			<routes:map method="GET" path="/users"><app:admin-users/></routes:map>
+		</auth:auth-check>
+	</routes:prefix>
 
 	<routes:map method="GET" path="/rss"><app:blog-rss-controller/></routes:map>
-
 	<routes:map method="GET" path="/robots.txt"><app:blog-robots/></routes:map>
 	<routes:map method="GET" path="/sitemap.xml"><app:blog-sitemap/></routes:map>
 
-	<dbp:switch test="{$fired}">
-		<dbp:case match="0">
-			<app:blog-index-controller />
-		</dbp:case>
-	</dbp:switch>
+	<app:blog-index-controller />
 
 </routes:routes>
 </app:configured>

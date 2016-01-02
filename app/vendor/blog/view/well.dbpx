@@ -10,9 +10,7 @@
 <dbp:tag name="well">
 	<div class="well">
 		<h4>{$title}</h4>
-		<p>
-			<dbp:execute />
-		</p>
+		<dbp:execute />
 	</div>
 </dbp:tag>
 

@@ -24,14 +24,92 @@
 
 <dbp:tag name="post-get">
 	<app:database>
-		<app:query statement="select * from article where uri = :uri">
+		<app:query statement="select * from article where uri = :uri and published = 1 and deleted = 0">
 			<dbp:execute/>
+		</app:query>
+	</app:database>
+</dbp:tag>
+
+<dbp:tag name="data-post-popular">
+	<app:database>
+		<app:query statement='
+			select distinct a.id, a.uri, a.title_long
+			from article a, category c, article_category ac
+			where a.published = 1 and a.deleted = 0 and ac.category = c.id and ac.article = a.id and c.role != "system#tag"
+			limit 5
+		'>
+			<dbp:execute/>
+		</app:query>
+	</app:database>
+</dbp:tag>
+
+<dbp:tag name="data-post-latest">
+	<app:database>
+		<app:query statement='
+			select distinct a.*
+			from article a, category c, article_category ac
+			where a.published = 1 and a.deleted = 0 and ac.category = c.id and ac.article = a.id and c.role != "system#tag"
+			order by updated_at desc
+			limit 5
+		'>
+			<dbp:execute/>
+		</app:query>
+	</app:database>
+</dbp:tag>
+
+<dbp:tag name="post-get-by-id">
+	<app:database>
+		<app:query statement="select * from article where id = :id">
+			<dbp:var name="blog_categories">
+				<app:query statement="select c.title from category c, article_category ac where ac.category = c.id and ac.article = :id">
+					<dbp:set name="blog_categories">{$title},{$blog_categories}</dbp:set>
+				</app:query>
+				<dbp:execute/>
+			</dbp:var>
 		</app:query>
 	</app:database>
 </dbp:tag>
 
 <dbp:tag name="post-save">
 	<app:database>
+		<app:transaction>
+			<app:query statement="delete from article_category where article = :id" />
+			<dbp:split name="c" value="{$categories}">
+				<app:query statement="select id as c_id from category where title = :c">
+					<app:query statement="insert into article_category (article, category) values (:id, :c_id)" />
+				</app:query>
+			</dbp:split>
+		</app:transaction>
+		<dbp:switch test="{len($id) > 0}">
+			<dbp:case match="1">
+				<app:query statement="update article set title_long = :title_long, description_long = :description_long, content = :content, uri = :uri, updated_at = now where id = :id" />
+			</dbp:case>
+			<dbp:case>
+				<app:query statement="insert into article (title_long, description_long, content, uri, created_at, updated_at) values (:title_long, :description_long, :content, :uri, now, now)">
+					<app:query statement="select id from article where rowid=last_insert_rowid()">
+						<dbp:execute />
+					</app:query>
+				</app:query>
+			</dbp:case>
+		</dbp:switch>
+	</app:database>
+</dbp:tag>
+
+<dbp:tag name="post-publish">
+	<app:database>
+		<app:query statement="update article set published = :published, updated_at = now where id = :id" />
+		<dbp:execute />
+	</app:database>
+	<!--
+		TODO https://blogs.yandex.ru/pings/info/
+		http://www.bestseoblog.ru/spisok-ping-servisov-wordpress/
+	-->
+</dbp:tag>
+
+<dbp:tag name="post-delete">
+	<app:database>
+		<app:query statement="update article set deleted = 1, updated_at = now where id = :id" />
+		<dbp:execute />
 	</app:database>
 </dbp:tag>
 

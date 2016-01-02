@@ -1,18 +1,27 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="1.0"
+	its:translate="yes"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
 
+<its:rules version="2.0">
+	<its:withinTextRule withinText="yes" selector="//h:a | //h:strong" xmlns:h="http://www.w3.org/1999/xhtml"/>
+</its:rules>
+
 <dbp:tag name="blog-not-found">
 	<app:page>
 		<h1>I Am Sorry</h1>
 		<p class="lead">The page you are looking for is not found</p>
-		<p>It just so happens that page might have been removed or had its name changed. Visit&amp;#x20;<a href="/">Home Page</a>&amp;#x20;
-			or use&amp;#x20;<strong>Blog Search</strong>&amp;#x20;form to find what you need.</p>
+		<p>It just so happens that page might have been removed or had its name changed. Visit <a href="/">Home Page</a>
+			or use <strong>Blog Search</strong> form to find what you need.</p>
 	</app:page>
 </dbp:tag>
 

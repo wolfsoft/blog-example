@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="1.0"
+	its:translate="no"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
@@ -10,11 +15,13 @@
 <dbp:tag name="popular">
 	<!-- Blog Categories Well -->
 	<div class="well">
-		<h4>Most Popular Posts</h4>
+		<h4 its:translate="yes">Most Popular Posts</h4>
 		<div class="row">
 			<div class="col-lg-12">
 				<ul class="list-unstyled">
-					<dbp:execute />
+					<app:data-post-popular>
+						<li><a href="{$uri}">{$title_long}</a></li>
+					</app:data-post-popular>
 				</ul>
 			</div>
 		</div>

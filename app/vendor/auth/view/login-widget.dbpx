@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="2.0"
+	its:translate="yes"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
-	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
 

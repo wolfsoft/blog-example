@@ -1,10 +1,19 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="1.0"
+	its:translate="no"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
+
+<its:rules version="2.0">
+	<its:translateRule selector="//dbp:var[@name='error_message']/@value" translate="yes" xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"/>
+</its:rules>
 
 <dbp:tag name="auth-login-check">
 	<app:database>

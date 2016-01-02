@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="1.0"
+	its:translate="no"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
@@ -56,7 +61,7 @@
 	<link rel="icon" type="image/png" href="/images/favicon/android-chrome-192x192.png" sizes="192x192" />
 	<link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16" />
 	<link rel="manifest" href="/images/favicon/manifest.json" />
-	<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+	<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" />
 	<meta name="msapplication-TileColor" content="#da532c" />
 	<meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png" />
 	<meta name="theme-color" content="#ffffff" />

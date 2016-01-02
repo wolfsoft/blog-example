@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="1.0"
+	its:translate="no"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
@@ -9,9 +14,7 @@
 
 <dbp:tag name="admin-view-settings">
 
-<h1 class="page-header">
-	Settings
-</h1>
+<h1 class="page-header" its:translate="yes">Settings</h1>
 
 <dbp:switch test="{len($action_message) > 0}">
 	<dbp:case match="1">
@@ -29,8 +32,8 @@
 	<div id="content">
 
 	<ul class="nav nav-tabs" data-tabs="tabs">
-		<li role="presentation" class="active"><a href="#blog" data-toggle="tab">Blog Settings</a></li>
-		<li role="presentation"><a href="#server" data-toggle="tab">Server Settings</a></li>
+		<li role="presentation" class="active"><a href="#blog" data-toggle="tab" its:translate="yes">Blog Settings</a></li>
+		<li role="presentation"><a href="#server" data-toggle="tab" its:translate="yes">Server Settings</a></li>
 	</ul>
 
 	<div class="tab-content">
@@ -38,20 +41,20 @@
 			<br />
 			<form method="post" action="/admin/settings" enctype="multipart/form-data">
 				<div class="form-group">
-					<label for="blog-title">Title</label>
+					<label for="blog-title" its:translate="yes">Title</label>
 					<input type="text" class="form-control" id="blog-title" placeholder="Type blog title…" name="blog_title" value="{$blog_title}"/>
 				</div>
 				<div class="form-group">
-					<label for="blog-desc">Description</label>
+					<label for="blog-desc" its:translate="yes">Description</label>
 					<textarea id="blog_desc" class="form-control" name="blog_description" rows="3" placeholder="Type blog description…">{$blog_description}</textarea>
 				</div>
 				<div class="form-group">
-					<label for="blog-logo">Logo</label>
+					<label for="blog-logo" its:translate="yes">Logo</label>
 					<input type="file" id="blog-logo" name="blog_logo"/>
-					<p class="help-block">To change the logo, select image file</p>
+					<p class="help-block" its:translate="yes">To change the logo, select image file</p>
 				</div>
 				<div class="form-group">
-					<label for="blog-content">Keynote Speech</label>
+					<label for="blog-content" its:translate="yes">Keynote Speech</label>
 					<input type="hidden" name="blog_content" />
 					<div id="blog-content" class="textarea" data-fill="blog_content" style="display:none">{$blog_content}</div>
 				</div>
@@ -62,7 +65,7 @@
 			</form>
 		</div> <!-- .tabpanel -->
 
-		<div role="tabpanel" class="tab-pane" id="server">
+		<div role="tabpanel" class="tab-pane" id="server" its:translate="yes">
 			<br />
 			<form method="post" action="/admin/settings">
 				<div class="form-group row">

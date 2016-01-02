@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xml:lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:its="http://www.w3.org/2005/11/its"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	its:version="2.0"
+	its:translate="no"
+>
+
+<dbp:tag name="views-post-rss-index">
+	<dbp:set name="content_type">text/xml; charset=utf-8</dbp:set>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	<rss version="2.0">
+		<channel>
+			<app:settings-get>
+				<title>{$blog_title}</title>
+
+				<dbp:var name="schema" value="{iif($system_use_ssl,'https','http')}">
+				<dbp:var name="host" value="{iif($blog_host,$blog_host,'localhost')}">
+
+					<link>{$schema}://{$host}/</link>
+
+					<description>{$blog_description}</description>
+					<language>{$blog_language}</language>
+
+					<app:posts-get>
+						<item>
+							<title>{$title_long}</title>
+							<link>{$schema}://{$host}{$uri}</link>
+							<description>{$description_long}</description>
+							<pubDate>{date_utc($updated_at)}</pubDate>
+						</item>
+					</app:posts-get>
+
+				</dbp:var>
+				</dbp:var>
+			</app:settings-get>
+		</channel>
+	</rss>
+</dbp:tag>
+
+</dbp:module>

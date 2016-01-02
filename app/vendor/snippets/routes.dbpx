@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
-	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
-	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
-	xmlns:routes="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom/app"
+	xmlns:routes="http://dbpager.org.ru/schemas/dbp/3.0/custom/routes"
 >
 
 <dbp:tag name="not-found">
@@ -27,18 +27,39 @@
 <dbp:tag name="map">
 	<dbp:switch test="{$fired}">
 		<dbp:case match="0">
-			<dbp:switch test="{$path_info = $path}">
-				<dbp:case match="1">
-					<dbp:switch test="{$http_method = $method}">
-						<dbp:case match="1">
-							<dbp:execute/>
-							<dbp:set name="fired">1</dbp:set>
-						</dbp:case>
-					</dbp:switch>
-				</dbp:case>
-			</dbp:switch>
+			<dbp:split name="left,right" separator="{$path}" value="{$path_info}">
+				<dbp:switch test="{len($left) = 0 &amp; len($right) = 0}">
+					<dbp:case match="1">
+						<dbp:switch test="{$http_method = $method}">
+							<dbp:case match="1">
+								<dbp:execute />
+								<dbp:set name="fired">1</dbp:set>
+							</dbp:case>
+						</dbp:switch>
+					</dbp:case>
+				</dbp:switch>
+			</dbp:split>
 		</dbp:case>
 	</dbp:switch>		
+</dbp:tag>
+
+<dbp:tag name="entity-map">
+	<routes:map method="GET" path="/{$name}.json"><dbp:call name="admin-{$name}-json"/></routes:map>
+	<routes:map method="GET" path="/{$name}/new"><dbp:call name="admin-{$name}-new-controller" /></routes:map>
+	<routes:map method="GET" path="/{$name}/"><dbp:call name="admin-{$name}-edit-controller" /></routes:map>
+	<routes:map method="GET" path="/{$name}"><dbp:call name="admin-{$name}-index-controller" /></routes:map>
+	<routes:map method="POST" path="/{$name}"><dbp:call name="admin-{$name}-save-controller" /></routes:map>
+</dbp:tag>
+
+<dbp:tag name="prefix">
+	<dbp:split name="left,right" separator="{$path}" value="{$path_info}">
+		<dbp:switch test="{len($left) = 0}">
+			<dbp:case match="1">
+				<dbp:set name="path_info">{$right}</dbp:set>
+				<dbp:execute />
+			</dbp:case>
+		</dbp:switch>
+	</dbp:split>
 </dbp:tag>
 
 </dbp:module>

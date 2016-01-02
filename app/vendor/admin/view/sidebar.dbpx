@@ -1,11 +1,21 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="2.0"
+	its:translate="no"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
+
+<its:rules version="2.0">
+	<its:translateRule selector="//*/@title" translate="yes"/>
+	<its:withinTextRule withinText="yes" selector="//h:a | //h:strong" xmlns:h="http://www.w3.org/1999/xhtml"/>
+</its:rules>
 
 <dbp:tag name="admin-view-sidebar">
 
@@ -14,23 +24,29 @@
 			<ul class="nav nav-pills nav-stacked">
 				<dbp:var name="asettings,aposts,acategories,acomments,asubscribers,ausers" value="">
 					<dbp:switch test="{$path_info}">
-						<dbp:case match="/admin"><dbp:set name="aposts">active</dbp:set></dbp:case>
-						<dbp:case match="/admin/settings"><dbp:set name="asettings">active</dbp:set></dbp:case>
-						<dbp:case match="/admin/posts"><dbp:set name="aposts">active</dbp:set></dbp:case>
-						<dbp:case match="/admin/posts/new"><dbp:set name="aposts">active</dbp:set></dbp:case>
-						<dbp:case match="/admin/categories"><dbp:set name="acategories">active</dbp:set></dbp:case>
-						<dbp:case match="/admin/comments"><dbp:set name="acomments">active</dbp:set></dbp:case>
-						<dbp:case match="/admin/subscribers"><dbp:set name="asubscribers">active</dbp:set></dbp:case>
-						<dbp:case match="/admin/users"><dbp:set name="ausers">active</dbp:set></dbp:case>
+						<dbp:case match="/settings"><dbp:set name="asettings">active</dbp:set></dbp:case>
+						<dbp:case match="/posts"><dbp:set name="aposts">active</dbp:set></dbp:case>
+						<dbp:case match="/posts/new"><dbp:set name="aposts">active</dbp:set></dbp:case>
+						<dbp:case match="/categories"><dbp:set name="acategories">active</dbp:set></dbp:case>
+						<dbp:case match="/comments"><dbp:set name="acomments">active</dbp:set></dbp:case>
+						<dbp:case match="/subscribers"><dbp:set name="asubscribers">active</dbp:set></dbp:case>
+						<dbp:case match="/users"><dbp:set name="ausers">active</dbp:set></dbp:case>
+						<dbp:case><dbp:set name="aposts">active</dbp:set></dbp:case>
 					</dbp:switch>
-					<li class="{$aposts}"><a href="/admin/posts">Posts</a></li>
-					<li class="{$acategories}"><a href="/admin/categories">Categories</a></li>
-					<li class="{$acomments}"><a href="/admin/comments">Comments</a></li>
-					<li class="{$asubscribers}"><a href="/admin/subscribers">Subscribers</a></li>
-					<li class="{$ausers}"><a href="/admin/users">Users</a></li>
-					<li class="{$asettings}"><a href="/admin/settings">Settings</a></li>
+					<li class="{$aposts}"><a href="/admin/posts" its:translate="yes">Posts</a></li>
+					<li class="{$acategories}"><a href="/admin/categories" its:translate="yes">Categories</a></li>
+					<li class="{$acomments}"><a href="/admin/comments" its:translate="yes">Comments</a></li>
+					<li class="{$asubscribers}"><a href="/admin/subscribers" its:translate="yes">Subscribers</a></li>
+					<li class="{$ausers}"><a href="/admin/users" its:translate="yes">Users</a></li>
+					<li class="{$asettings}"><a href="/admin/settings" its:translate="yes">Settings</a></li>
 				</dbp:var>
 			</ul>
+		</nav>
+	</app:admin-view-well>
+
+	<app:admin-view-well title="Update Your System">
+		<nav class="clearfix" its:translate="yes">
+			<p>Platform update is available.<br/>See <a href="http://dbpager.com/news" target="_blank">what's new</a>, <a href="http://dbpager.com/docker-update-underlying-image" target="_blank">how to update</a>.</p>
 		</nav>
 	</app:admin-view-well>
 

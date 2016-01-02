@@ -12,16 +12,15 @@
 >
 
 <its:rules version="2.0">
-	<its:translateRule selector="//*/@value" translate="yes"/>
+	<its:translateRule selector="//*/@header" translate="yes"/>
 </its:rules>
 
-<dbp:tag name="admin-settings-save">
-	<app:settings-save />
-	<dbp:var name="action_message" value="Settings are saved">
+<dbp:tag name="admin-posts-edit-controller">
 	<app:admin-page>
-		<app:admin-view-settings />
+		<app:post-get-by-id id="{$arg3}">
+			<app:admin-posts-edit-form header="Edit Post" />
+		</app:post-get-by-id>
 	</app:admin-page>
-	</dbp:var>
 </dbp:tag>
 
 </dbp:module>

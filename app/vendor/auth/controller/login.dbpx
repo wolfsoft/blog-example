@@ -1,16 +1,23 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="1.0"
+	its:translate="no"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
 
+<its:rules version="2.0">
+	<its:translateRule selector="//*/@placeholder" translate="yes"/>
+</its:rules>
+
 <dbp:tag name="auth-login">
-	<app:blog-index-view>
-		<h1 class="page-header">
-			Log In
-		</h1>
+	<app:page title="Logging In" description="Logging in to the administrative section">
+		<h1 class="page-header" its:translate="yes">Log In</h1>
 
 		<dbp:switch test="{len($error_message) > 0}">
 			<dbp:case match="1">
@@ -18,7 +25,7 @@
 			</dbp:case>
 		</dbp:switch>
 
-		<form method="post" action="/auth/login">
+		<form method="post" action="/auth/login" its:translate="yes">
 			<div class="form-group">
 				<label for="auth-email">Email</label>
 				<input type="email" class="form-control" id="auth-email" placeholder="Type your email…" name="email" />
@@ -36,7 +43,7 @@
 			</div>
 		</form>
 
-	</app:blog-index-view>
+	</app:page>
 </dbp:tag>
 
 </dbp:module>

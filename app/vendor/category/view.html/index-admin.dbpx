@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xml:lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="2.0"
+	its:translate="no"
+>
+
+<dbp:tag name="category-index-admin-view">
+
+<h1 class="page-header" its:translate="yes">Categories</h1>
+
+<dbp:switch test="{len($action_message) > 0}">
+	<dbp:case match="1">
+		<div class="alert alert-success" role="alert">{$action_message}</div>
+	</dbp:case>
+</dbp:switch>
+
+<a href="/admin/categories/new" class="btn btn-primary" its:translate="yes"><i class="fa fa-plus"></i> New Category…</a>
+
+<p>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th its:translate="yes">Title</th>
+			<th its:translate="yes">Description</th>
+			<th its:translate="yes">Role</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<app:categories-get-all>
+		<tr>
+			<td><a href="/admin/categories/{$id}">{$title}</a></td>
+			<td>{$description}</td>
+			<td>{$role}</td>
+			<td>
+				<div class="dropdown" its:translate="yes">
+					<button id="dLabel" type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+					<ul class="dropdown-menu" aria-labelledby="dLabel">
+						<li><a href="/admin/categories/{$id}">Edit Category…</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="/admin/categories/{$id}/delete">Delete Category…</a></li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+		</app:categories-get-all>
+	</tbody>
+</table>
+</p>
+
+</dbp:tag>
+
+</dbp:module>

@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:sql="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="data-category">
+	<sql:database>
+		<sql:query statement='select * from category where role = "category"'>
+			<dbp:execute />
+		</sql:query>
+	</sql:database>
+</dbp:tag>
+
+<dbp:tag name="data-tag">
+	<sql:database>
+		<sql:query statement='select * from category where role = "tag"'>
+			<dbp:execute />
+		</sql:query>
+	</sql:database>
+</dbp:tag>
+
+<dbp:tag name="data-category-add">
+	<sql:database>
+		<sql:query statement='insert into category (title, role) values (:title, "category")'>
+			<sql:query statement="select * from category where rowid = last_insert_rowid()">
+				<dbp:execute />
+			</sql:query>
+		</sql:query>
+	</sql:database>
+</dbp:tag>
+
+<dbp:tag name="data-categories-for">
+	<sql:database>
+		<sql:query statement="select id, title from category c, article_category ac where ac.article = :post and ac.category = c.id and c.role='category'">
+			<dbp:execute />
+		</sql:query>
+	</sql:database>
+</dbp:tag>
+
+<dbp:tag name="data-tags-for">
+	<sql:database>
+		<sql:query statement="select id, title from category c, article_category ac where ac.article = :post and ac.category = c.id and c.role='tag'">
+			<dbp:execute />
+		</sql:query>
+	</sql:database>
+</dbp:tag>
+
+<dbp:tag name="categories-get">
+	<sql:database>
+		<sql:query statement="select title from category where role='category'">
+			<dbp:execute/>
+		</sql:query>
+	</sql:database>
+</dbp:tag>
+
+<dbp:tag name="category-get-by-id">
+	<sql:database>
+		<sql:query statement="select * from category where id = :id">
+			<dbp:execute/>
+		</sql:query>
+	</sql:database>
+</dbp:tag>
+
+<dbp:tag name="categories-get-all">
+	<sql:database>
+		<sql:query statement="select * from category order by role, title">
+			<dbp:execute/>
+		</sql:query>
+	</sql:database>
+</dbp:tag>
+
+<dbp:tag name="categories-save">
+	<sql:database>
+		<dbp:switch test="{len($id) > 0}">
+			<dbp:case match="1">
+				<sql:query statement="update category set title = :title, description = :description where id = :id" />
+			</dbp:case>
+			<dbp:case>
+				<sql:query statement="insert into category (title, description, role) values (:title, :description, 'category')">
+					<sql:query statement="select id from category where rowid=last_insert_rowid()">
+						<dbp:execute />
+					</sql:query>
+				</sql:query>
+			</dbp:case>
+		</dbp:switch>
+	</sql:database>
+</dbp:tag>
+
+</dbp:module>

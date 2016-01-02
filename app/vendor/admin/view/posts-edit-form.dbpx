@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xml:lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	its:version="2.0"
+	its:translate="no"
+>
+
+<its:rules version="2.0">
+	<its:translateRule selector="//*/@placeholder" translate="yes"/>
+</its:rules>
+
+<dbp:tag name="admin-posts-edit-form">
+
+<h1 class="page-header">{$header}</h1>
+
+<dbp:switch test="{len($action_message) > 0}">
+	<dbp:case match="1">
+		<div class="alert alert-success" role="alert">{$action_message}</div>
+	</dbp:case>
+</dbp:switch>
+
+<form method="post" action="/admin/posts{iif($id,'/{$id}','')}">
+	<app:xsrf-token />
+	<div class="form-group">
+		<label for="blog-url" its:translate="yes">URL</label>
+		<input type="text" class="form-control" id="blog-url" placeholder="Unique article address" name="uri" value="{$uri}"/>
+	</div>
+	<div class="form-group">
+		<label for="blog-title" its:translate="yes">Title</label>
+		<input type="text" class="form-control" id="blog-title" placeholder="Type post title…" name="title_long" value="{$title_long}"/>
+	</div>
+	<div class="form-group">
+		<label for="blog-desc" its:translate="yes">Description</label>
+		<textarea id="blog_desc" class="form-control" name="description_long" rows="3" placeholder="Type post description…">{$description_long}</textarea>
+	</div>
+	<div class="form-group">
+		<label for="blog-categories" its:translate="yes">Categories</label>
+		<input type="text" class="form-control tag-list" id="blog-categories" name="categories" placeholder="Select categories" value="{$blog_categories}"/>
+	</div>
+	<div class="form-group">
+		<label for="blog-desc" its:translate="yes">Content</label>
+		<input type="hidden" name="content" />
+		<div class="textarea" data-fill="content" style="display:none">{$content}</div>
+	</div>
+	<div class="form-group">
+		<hr />
+		<button type="submit" class="btn btn-primary" its:translate="yes">Save changes</button>
+	</div>
+</form>
+
+</dbp:tag>
+
+</dbp:module>

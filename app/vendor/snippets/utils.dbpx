@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+>
+
+<dbp:tag name="soft-transaction">
+	<dbp:var name="content,_tmpXCR_fired">
+		<dbp:set name="content">
+			<dbp:execute/>
+		</dbp:set>
+		<dbp:switch test="{$_tmpXCR_fired}">
+			<dbp:case match="1">
+				{$content}
+			</dbp:case>
+		</dbp:switch>
+	</dbp:var>
+</dbp:tag>
+
+<dbp:tag name="soft-commit">
+	<dbp:set name="_tmpXCR_fired">1</dbp:set>
+</dbp:tag>
+
+</dbp:module>

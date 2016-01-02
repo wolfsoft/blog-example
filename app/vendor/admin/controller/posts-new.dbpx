@@ -1,15 +1,23 @@
 <?xml version="1.0"?>
 
 <dbp:module
-	xmlns="http://www.w3.org/1999/xhtml"
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="2.0"
+	its:translate="no"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
 
-<dbp:tag name="admin-posts-new">
+<its:rules version="2.0">
+	<its:translateRule selector="//*/@header" translate="yes"/>
+</its:rules>
+
+<dbp:tag name="admin-posts-new-controller">
 	<app:admin-page>
-		<app:admin-view-posts-new />
+		<app:admin-posts-edit-form header="New Post" />
 	</app:admin-page>
 </dbp:tag>
 

@@ -1,56 +1,53 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="1.0"
+	its:translate="no"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
 >
 
+<its:rules version="2.0">
+	<its:translateRule selector="//*/@placeholder" translate="yes"/>
+</its:rules>
+
 <dbp:tag name="sidebar">
 	<app:well title="Contact Me">
 		<div class="clearfix">
-			<img src="/images/author.jpg" class="img-responsive" width="160" height="160" alt="" style="margin:0 1em 1em;float:left" />
+			<img src="/images/author.jpg" class="img-responsive" width="160" height="160" style="margin:0 1em 1em;float:left" alt="dbPager Author"/>
 			<p><strong>Dennis Prochko</strong></p>
 			<ul class="list-unstyled">
-				<li><i class="fa fa-envelope"></i>&amp;#x20;<a href="mailto:wolfsoft@mail.ru">Email</a></li>
-				<li><i class="fa fa-comments"></i>&amp;#x20;<a href="https://telegram.me/wolfsoft">Telegram</a></li>
-				<li><i class="fa fa-google-plus-square"></i>&amp;#x20;<a href="https://plus.google.com/u/0/117719450860870768407">Google +</a></li>
-				<li><i class="fa fa-github-square"></i>&amp;#x20;<a href="https://github.com/wolfsoft">GitHub</a></li>
+				<li><i class="fa fa-envelope"></i>&amp;nbsp;<a href="mailto:wolfsoft@mail.ru">Email</a></li>
+				<li><i class="fa fa-comments"></i>&amp;nbsp;<a href="https://telegram.me/wolfsoft">Telegram</a></li>
+				<li><i class="fa fa-google-plus-square"></i>&amp;nbsp;<a href="https://plus.google.com/u/0/117719450860870768407">Google +</a></li>
+				<li><i class="fa fa-github-square"></i>&amp;nbsp;<a href="https://github.com/wolfsoft">GitHub</a></li>
 			</ul>
 		</div>
 	</app:well>
 
 	<app:search />
 
-	<app:categories>
-		<li><a href="#">Databases</a></li>
-		<li><a href="#">dbPager Server</a></li>
-		<li><a href="#">Linux &amp; Unix</a></li>
-		<li><a href="#">Programming</a></li>
-		<li><a href="#">Web Development</a></li>
-	</app:categories>
+	<app:category-widget />
 	
-	<app:popular>
-		<li><a href="#">Databases</a></li>
-		<li><a href="#">dbPager Server</a></li>
-		<li><a href="#">Linux &amp; Unix</a></li>
-		<li><a href="#">Programming</a></li>
-		<li><a href="#">Web Development</a></li>
-	</app:popular>
+	<app:popular />
 
 	<app:well title="Subscribe To Blog Updates">
 		<div class="clearfix">
 			<form action="subscribe">
 				<div class="form-group">
-					<label for="email">Email address</label>
-					<input type="email" class="form-control" id="email" name="email" placeholder="Type your email…" />
-					<p class="pull-right"><small>I promise do not spam you</small></p>
+					<label for="email" its:translate="yes">Email address</label>
+					<input type="email" class="form-control" id="email" name="email" placeholder="Type your email…" its:translate="yes" />
+					<p class="pull-right"><small its:translate="yes">I promise do not spam you</small></p>
 				</div>
-				<button type="submit" class="btn btn-default">Subscribe</button>
+				<button type="submit" class="btn btn-default" its:translate="yes">Subscribe</button>
 			</form>
 			<br />
-			<p><span class="fa fa-rss"></span>&amp;#x20;<a href="/rss">Subscribe to RSS channel</a></p>
+			<p><span class="fa fa-rss"></span>&amp;nbsp;<a href="/rss" its:translate="yes">Subscribe to RSS channel</a></p>
 		</div>
 	</app:well>
 

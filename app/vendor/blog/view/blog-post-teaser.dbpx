@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xml:lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="2.0"
+	its:translate="no"
+>
+
+<dbp:tag name="blog-post-teaser">
+	<h3>
+		<a href="#">{$title_long}</a>
+	</h3>
+
+	<p>
+		<span class="fa fa-list-alt"></span> Posted to
+		<app:data-categories-for post="{$id}">
+			<a href="/cat/{$id}">{$title}</a>
+		</app:data-categories-for>
+	</p>
+
+	<app:soft-transaction>
+		<p>
+			<span class="fa fa-tag"></span> \
+			<app:data-tags-for post="{$id}">
+				<a href="/cat/{$id}">#{$title}</a> \
+				<app:soft-commit />
+			</app:data-tags-for>
+		</p>
+	</app:soft-transaction>
+
+	<p><span class="glyphicon glyphicon-time"></span> Posted on {date_fmt("%c", $updated_at)}</p>
+
+	<hr />
+
+	<app:soft-transaction>
+		<dbp:var name="first" value="1">
+		<dbp:regexp name="r" expr='&lt;img(.+?)src="(.+?)"(.+?)\\/\\>' value="{$content}">
+			<lib:if test="{$first}">
+			<dbp:split name="r,right" value="{$r}" separator='src="'>
+				<dbp:split name="r,right" value="{$right}" separator='"'>
+					<img src="{$r}" class="img-responsive" width="900" height="300" alt="{$title_long}" />
+					<app:soft-commit />
+				</dbp:split>
+			</dbp:split>
+			<dbp:set name="first">0</dbp:set>
+			</lib:if>
+		</dbp:regexp>
+		</dbp:var>
+		<hr />
+	</app:soft-transaction>
+
+	{$content}
+
+	<br />
+	<a class="btn btn-primary" href="#" its:translate="yes">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+	<hr />
+</dbp:tag>
+
+</dbp:module>

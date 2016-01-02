@@ -11,22 +11,19 @@
 
 	<dbp:switch test="{$fired}">
 		<dbp:case match="0">
-			<app:post-get uri="/{$arg1}">
-				<app:blog-post />
-				<dbp:set name="fired">1</dbp:set>
-			</app:post-get>
-		</dbp:case>
-	</dbp:switch>
-
-	<dbp:switch test="{$fired}">
-		<dbp:case match="0">
-			<app:settings-get>
-				<app:blog-index-view>
-					<app:content />
-					<app:posts-get />
-					<dbp:set name="fired">1</dbp:set>
-				</app:blog-index-view>
-			</app:settings-get>
+			<dbp:switch test="{$path_info = '/'}">
+				<dbp:case match="1">
+					<app:blog-index-view>
+						<dbp:set name="fired">1</dbp:set>
+					</app:blog-index-view>
+				</dbp:case>
+				<dbp:case match="0">
+					<app:post-get uri="{$path_info}">
+						<app:blog-post />
+						<dbp:set name="fired">1</dbp:set>
+					</app:post-get>
+				</dbp:case>
+			</dbp:switch>
 		</dbp:case>
 	</dbp:switch>
 

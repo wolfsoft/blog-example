@@ -1,0 +1,9 @@
+<its:rules
+	xmlns:its="http://www.w3.org/2005/11/its"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	version="2.0">
+
+	<its:translateRule translate="no" selector="//dbp:module" />
+
+</its:rules>
+

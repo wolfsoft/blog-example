@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="2.0"
+	its:translate="no"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
@@ -8,14 +12,17 @@
 >
 
 <dbp:tag name="blog-sitemap">
-	<dbp:set name="content_type">text/xml; charset=utf-8</dbp:set>
-	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-		<url>
-			<loc>http://{$blog_host}/</loc>
-			<lastmod>2005-01-01</lastmod>
-		</url>
-	</urlset> 
+	<dbp:set name="content_type">text/xml; charset=utf-8</dbp:set>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	<dbp:var name="schema" value="{iif($system_use_ssl,'https','http')}">
+	<dbp:var name="host" value="{iif($blog_host,$blog_host,'localhost')}">
+		&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+			<url>
+				<loc>{$schema}://{$host}/</loc>
+				<lastmod>2005-01-01</lastmod>
+			</url>
+		&lt;/urlset&gt;
+	</dbp:var>
+	</dbp:var>
 </dbp:tag>
 
 </dbp:module>

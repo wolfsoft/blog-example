@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xml:lang="en"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom/app"
+	xmlns:auth="http://dbpager.org.ru/schemas/dbp/3.0/custom/auth"
+	xmlns:routes="http://dbpager.org.ru/schemas/dbp/3.0/custom/routes"
+	xmlns:controllers="http://dbpager.org.ru/schemas/dbp/3.0/custom/controllers"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="2.0"
+	its:translate="no"
+>
+
+<its:rules version="2.0">
+	<its:translateRule selector="//*/@header" translate="yes"/>
+	<its:translateRule selector="//*/@value" translate="yes"/>
+</its:rules>
+
+<dbp:tag name="category-index-controller">
+	<app:page>
+		<app:category-index-view />
+	</app:page>
+</dbp:tag>
+
+<dbp:tag name="category-item-controller">
+	<app:category-item-view />
+</dbp:tag>
+
+<dbp:tag name="category-create-form-controller">
+	<app:category-edit-form-view />
+</dbp:tag>
+
+<dbp:tag name="category-edit-form-controller">
+	<app:category-get-by-id>
+		<app:category-edit-form-view />
+	</app:category-get-by-id>
+</dbp:tag>
+
+<dbp:tag name="category-create-controller">
+	<app:category-create-data />
+</dbp:tag>
+
+<dbp:tag name="category-edit-controller">
+	<app:category-edit-data />
+</dbp:tag>
+
+<dbp:tag name="category-delete-controller">
+	<app:category-delete-data />
+</dbp:tag>
+
+<dbp:tag name="admin-categories-index-controller">
+	<app:admin-page>
+		<app:category-index-admin-view />
+	</app:admin-page>
+</dbp:tag>
+
+<dbp:tag name="admin-categories-new-controller">
+	<app:admin-page>
+		<app:category-edit-form-view header="New Category" />
+	</app:admin-page>
+</dbp:tag>
+
+<dbp:tag name="admin-categories-edit-controller">
+	<app:admin-page>
+		<app:category-get-by-id id="{$arg3}">
+			<app:category-edit-form-view header="Edit Category" />
+		</app:category-get-by-id>
+	</app:admin-page>
+</dbp:tag>
+
+<dbp:tag name="admin-categories-save-controller">
+	<app:categories-save id="{$arg3}">
+		<dbp:throw code="302">/admin/categories/{$id}</dbp:throw>
+	</app:categories-save>
+	<dbp:var name="action_message" value="Changes are saved">
+		<app:admin-categories-edit-controller />
+	</dbp:var>
+</dbp:tag>
+
+<dbp:tag name="admin-categories-json">
+	<dbp:set name="content_type">application/json; charset=utf-8</dbp:set>
+	<app:category-index-view-json />
+</dbp:tag>
+
+</dbp:module>

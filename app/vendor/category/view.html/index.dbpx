@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<dbp:module
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
+	xmlns:app="http://dbpager.org.ru/schemas/dbp/3.0/custom"
+>
+
+<dbp:tag name="category-index-view">
+	<app:data-category>
+		<li><a href="/category/{$id}">{$title}</a></li>
+	</app:data-category>
+</dbp:tag>
+
+<dbp:tag name="tag-index-view">
+	<app:data-tag>
+		<li><a href="/tag/{$id}">#{$title}</a></li>
+	</app:data-tag>
+</dbp:tag>
+
+</dbp:module>

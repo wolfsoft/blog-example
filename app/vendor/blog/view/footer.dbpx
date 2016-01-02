@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 
 <dbp:module
+	xml:lang="en"
+	xml:space="preserve"
+	xmlns:its="http://www.w3.org/2005/11/its" 
+	its:version="1.0"
+	its:translate="no"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:dbp="http://dbpager.org.ru/schemas/dbp/3.0"
 	xmlns:lib="http://dbpager.org.ru/schemas/dbp/3.0/custom"
@@ -10,11 +15,9 @@
 <dbp:tag name="footer">
 	<div class="row">
 		<div class="col-lg-12">
-			<p>Copyright © 2015 Dennis Prochko</p>
+			<p its:translate="yes">Copyright © 2015 Dennis Prochko</p>
 		</div>
-		<!-- /.col-lg-12 -->
 	</div>
-	<!-- /.row -->
 </dbp:tag>
 
 </dbp:module>
